@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GVLK 密钥大全 · 微软官方 KMS 客户端激活密钥</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1f2733; --muted:#5b6b7d;
+    --line:#e3e8ef; --brand:#0a66c2; --brand-soft:#e8f1fb;
+    --ok:#1a7f4b; --warn:#b54708; --warn-soft:#fff4e5; --code:#0b3d2e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6}
+  header{background:linear-gradient(135deg,#0a66c2,#0e3f7a);color:#fff;padding:28px 20px 22px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+  header h1{margin:0 0 6px;font-size:26px}
+  header p{margin:0;opacity:.9;font-size:14px}
+  .collect{display:inline-block;margin-top:10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+           border-radius:20px;padding:4px 14px;font-size:12.5px}
+  .notice{background:var(--warn-soft);border:1px solid #f3d29a;color:var(--warn);
+          border-radius:10px;padding:14px 16px;margin:18px 0;font-size:13.5px}
+  .notice b{color:var(--warn)}
+  .srcbar{background:var(--brand-soft);border:1px solid #cfe2f7;color:var(--brand);border-radius:10px;
+          padding:10px 16px;margin:14px 0;font-size:13px}
+  .srcbar b{color:var(--brand)}
+  main{padding:8px 0 60px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 10px}
+  #search{flex:1;min-width:220px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;
+          font-size:15px;background:#fff;color:var(--ink)}
+  #search:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+  .count{font-size:13px;color:var(--muted);white-space:nowrap}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:16px 0;overflow:hidden}
+  .sec-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);
+         background:var(--brand-soft)}
+  .sec-h h2{margin:0;font-size:17px;color:var(--brand)}
+  .sec-h .badge{margin-left:auto;font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);
+                border-radius:20px;padding:2px 10px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:11px 18px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  th{font-size:12.5px;color:var(--muted);font-weight:600;background:#fafbfc;letter-spacing:.02em}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#f8fbff}
+  .pname{font-weight:600}
+  .pnote{color:var(--muted);font-size:12.5px;font-weight:400;margin-top:3px}
+  .key{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;background:#0b1220;color:#7ee2a8;
+       padding:6px 10px;border-radius:7px;font-size:13.5px;letter-spacing:.04em;display:inline-block}
+  .copy{border:1px solid var(--brand);background:#fff;color:var(--brand);border-radius:8px;
+        padding:6px 12px;font-size:13px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .copy:hover{background:var(--brand);color:#fff}
+  .copy.done{background:var(--ok);border-color:var(--ok);color:#fff}
+  .empty{text-align:center;color:var(--muted);padding:30px;font-size:14px}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 16px 40px}
+  footer a{color:var(--brand)}
+  @media (max-width:620px){
+    th:nth-child(1),td:nth-child(1){min-width:140px}
+    .key{font-size:12px}
+    td,th{padding:10px 12px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>GVLK 密钥大全</h1>
+    <p>Microsoft 官方 KMS / Active Directory 批量激活客户端密钥（Generic Volume License Key）</p>
+    <span class="collect">📡 来自 ai-chin-a.space 收集整理</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <b>用途与重要说明：</b>GVLK（通用批量授权密钥）是微软官方公开文档提供的 <b>KMS 客户端安装密钥</b>。它<b>本身不能激活系统</b>——
+    仅用于在已部署企业 KMS 主机（或 AD 域激活）的内网中，把目标机器配置成 KMS 客户端后自动激活。
+    这些密钥<b>不能用于零售版、不能当作"激活破解"工具</b>，也无法脱离企业授权环境单独激活。
+    合法使用前提：你/你的组织持有相应版本的批量授权（Open / Select / EA 等）。
+    数据来源：Microsoft Learn 官方文档（Windows Server KMS、Office VL 激活），抓取于 2026-08-19。<br>
+    <b>关于 XP：</b>Windows XP 及更早版本<b>不在 GVLK 体系内</b>——KMS 批量激活技术自 Windows Vista / Server 2008 才引入，微软官方从未发布 XP 的 GVLK，因此本页不含 XP（XP 时代只有零售/OEM/MAK，无 KMS 客户端密钥）。
+  </div>
+
+  <div class="srcbar">
+    <b>收集来源：</b>本页所有 GVLK 条目由 <b>ai-chin-a.space</b> 从微软官方文档（Microsoft Learn）抓取整理，并经多语言镜像与历史 Technet 文档交叉校验。密钥均为微软公开信息，仅用于合法批量激活环境。
+  </div>
+
+  <div class="toolbar">
+    <input id="search" type="text" placeholder="搜索版本 / 产品名，例如：Windows 11、Server 2025、Office 2021、Visio…" autocomplete="off">
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="result"></div>
+
+  <footer>
+    数据来源：<a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys" target="_blank" rel="noopener">Microsoft Learn · Windows KMS 客户端密钥</a>
+    ｜ <a href="https://learn.microsoft.com/en-us/deployoffice/vlactivation/gvlks" target="_blank" rel="noopener">Microsoft Learn · Office GVLK</a><br>
+    本页由 <b>ai-chin-a.space</b> 收集整理 · 仅整理官方公开信息，不构成任何绕开授权之建议。
+  </footer>
+</main>
+
+<script>
+const DATA = [
+  { sec:"Windows 11 / 10（半年度频道）", items:[
+    { name:"Windows 11 Pro / 10 Pro", key:"W269N-WFGWX-YVC9B-4J6C9-T83GX", note:"面向个人/小企业：可加入域、BitLocker 加密、远程桌面主机。" },
+    { name:"Windows 11 Pro N / 10 Pro N", key:"MH37W-N47XK-V7XM9-C7227-GCQG9", note:"欧洲“N”版：按欧盟要求不含 Windows Media Player 等媒体组件。" },
+    { name:"Windows 11 Pro for Workstations / 10 Pro for Workstations", key:"NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J", note:"高端工作站：支持 ReFS、持久内存、多路 CPU 与额外内存。" },
+    { name:"Windows 11 Pro for Workstations N / 10 Pro for Workstations N", key:"9FNHH-K3HBT-3W4TD-6383H-6XYWF", note:"同上，欧洲“N”版（不含媒体组件）。" },
+    { name:"Windows 11 Pro Education / 10 Pro Education", key:"6TP4R-GNPTD-KYYHQ-7B7DP-J447Y", note:"面向学校的 Pro 版本，功能同 Pro。" },
+    { name:"Windows 11 Pro Education N / 10 Pro Education N", key:"YVWGF-BXNMC-HTQYQ-CPQ99-66QFC", note:"同上，欧洲“N”版。" },
+    { name:"Windows 11 Education / 10 Education", key:"NW6C2-QMPVW-D7KKK-3GKT6-VCFB2", note:"学校批量授权，功能接近 Enterprise，含教育管理特性。" },
+    { name:"Windows 11 Education N / 10 Education N", key:"2WH4N-8QGBV-H22JP-CT43Q-MDWWJ", note:"同上，欧洲“N”版。" },
+    { name:"Windows 11 Enterprise / 10 Enterprise", key:"NPPR9-FWDCX-D2C8J-H872K-2YT43", note:"企业版，功能最全，需 KMS / MAK 批量授权激活。" },
+    { name:"Windows 11 Enterprise N / 10 Enterprise N", key:"DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", note:"同上，欧洲“N”版。" },
+    { name:"Windows 11 Enterprise G / 10 Enterprise G", key:"YYVX9-NTFWV-6MDM3-9PT4T-4M68B", note:"政府特别版（含中国市场），需特定政府授权渠道。" },
+    { name:"Windows 11 Enterprise G N / 10 Enterprise G N", key:"44RPN-FTY23-9VTTB-MP9BX-T84FV", note:"同上，欧洲“N”版。" },
+  ]},
+  { sec:"Windows Enterprise LTSC / LTSB", items:[
+    { name:"Windows 11 Enterprise LTSC 2024 / 10 Enterprise LTSC 2021·2019", key:"M7XTQ-FN8P6-TTKYV-9D4CC-J462D", note:"长期服务通道：无应用商店/小娜，约 10 年支持，适合工控/专用设备。" },
+    { name:"Windows 11 Enterprise N LTSC 2024 / 10 Enterprise N LTSC 2021·2019", key:"92NFX-8DJQP-P6BBQ-THF9C-7CG2H", note:"同上，欧洲“N”版。" },
+  ]},
+  { sec:"早期 Windows 客户端（Windows 8.1 / 8 / 7 / Vista）", items:[
+    { name:"Windows 8.1 Pro", key:"GCRJD-8NW9H-F2CDX-CCM8D-9D6T9", note:"Windows 8.1 专业版，可加域与远程桌面。" },
+    { name:"Windows 8.1 Pro N", key:"HMCNV-VVBFX-7HMBH-CTY9B-B4FXY", note:"欧洲“N”版，不含媒体组件。" },
+    { name:"Windows 8.1 Enterprise", key:"MHF9N-XY6XB-WVXMC-BTDCT-MKKG7", note:"企业版，仅限批量授权（KMS/MAK）。" },
+    { name:"Windows 8.1 Enterprise N", key:"TT4HM-HN7YT-62K67-RGRQJ-JFFXW", note:"欧洲“N”版。" },
+    { name:"Windows 8 Pro", key:"NG4HW-VH26C-733KW-K6F98-J8CK4", note:"Windows 8 专业版（已退市，扩展支持结束）。" },
+    { name:"Windows 8 Pro N", key:"XCVCF-2NXM9-723PB-MHCB7-2RYQQ", note:"欧洲“N”版。" },
+    { name:"Windows 8 Enterprise", key:"32JNW-9KQ84-P47T8-D8GGY-CWCK7", note:"企业版，仅限批量授权。" },
+    { name:"Windows 8 Enterprise N", key:"JMNMF-RHW7P-DMY6X-RF3DR-X2BQT", note:"欧洲“N”版。" },
+    { name:"Windows 7 Professional", key:"FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4", note:"Windows 7 专业版（主流支持已停，仅剩有限付费扩展）。" },
+    { name:"Windows 7 Professional N", key:"MRPKT-YTG23-K7D7T-X2JMM-QY7MG", note:"欧洲“N”版。" },
+    { name:"Windows 7 Professional E", key:"W82YF-2Q76Y-63HXB-FGJG9-GF7QX", note:"欧洲“E”版：不含 Internet Explorer。" },
+    { name:"Windows 7 Enterprise", key:"33PXH-7Y6KF-2VJC9-XBBR8-HVTHH", note:"企业版，仅限批量授权（KMS/MAK）。" },
+    { name:"Windows 7 Enterprise N", key:"YDRBP-3D83W-TY26F-D46B2-XCKRJ", note:"欧洲“N”版。" },
+    { name:"Windows 7 Enterprise E", key:"C29WB-22CC8-VJ326-GHFJW-H9DH4", note:"欧洲“E”版（不含 IE）。" },
+    { name:"Windows Vista Business", key:"YFKBB-PQJJV-G996G-VWGXY-2V3X8", note:"Windows Vista 商业版（已停止支持）。" },
+    { name:"Windows Vista Business N", key:"HMBQG-8H2RH-C77VX-27R82-VMQBT", note:"欧洲“N”版。" },
+    { name:"Windows Vista Enterprise", key:"VKK3X-68KWM-X2YGT-QR4M6-4BWMV", note:"企业版，仅限批量授权。" },
+    { name:"Windows Vista Enterprise N", key:"VTC42-BM838-43QHV-84HX6-XJXKV", note:"欧洲“N”版。" },
+  ]},
+  { sec:"Windows Server 2025", items:[
+    { name:"Windows Server 2025 Standard", key:"TVRH6-WHNXV-R9WG3-9XRFY-MY832", note:"标准版：每授权最多运行 2 个虚拟机。" },
+    { name:"Windows Server 2025 Datacenter", key:"D764K-2NDRG-47T6Q-P8T8W-YP6DF", note:"数据中心版：无限虚拟机 + 软件定义存储/网络等高级功能。" },
+    { name:"Windows Server 2025 Datacenter: Azure Edition", key:"XGN3F-F394H-FD2MY-PP6FD-8MCRC", note:"仅可运行于 Azure 或本地 Azure Stack HCI 环境。" },
+  ]},
+  { sec:"Windows Server 2022 / 2019 / 2016（LTSC）", items:[
+    { name:"Windows Server 2022 Standard", key:"VDYBN-27WPP-V4HQT-9VMD4-VMK7H", note:"标准版：每授权最多 2 个虚拟机。" },
+    { name:"Windows Server 2022 Datacenter", key:"WX4NM-KYWYW-QJJR4-XV3QB-6VM33", note:"数据中心版：无限虚拟机 + 高级软件定义功能。" },
+    { name:"Windows Server 2022 Datacenter: Azure Edition", key:"NTBV8-9K7Q8-V27C6-M2BTV-KHMXV", note:"仅可运行于 Azure / Azure Stack HCI。" },
+    { name:"Windows Server 2019 Standard", key:"N69G4-B89J2-4G8F4-WWYCC-J464C", note:"标准版：每授权最多 2 个虚拟机。" },
+    { name:"Windows Server 2019 Datacenter", key:"WMDGN-G9PQG-XVVXX-R3X43-63DFG", note:"数据中心版：无限虚拟机 + 软件定义功能。" },
+    { name:"Windows Server 2019 Essentials", key:"WVDHN-86M7X-466P6-VHXV7-YY726", note:"小型企业版：面向 ≤25 用户 / 50 设备环境。" },
+    { name:"Windows Server 2016 Standard", key:"WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", note:"标准版：每授权最多 2 个虚拟机（按内核授权）。" },
+    { name:"Windows Server 2016 Datacenter", key:"CB7KF-BWN84-R7R2Y-793K2-8XDDG", note:"数据中心版：无限虚拟机，含全部软件定义特性。" },
+    { name:"Windows Server 2016 Essentials", key:"JCKRF-N37P4-C2D82-9YXRT-4M63B", note:"小型企业版：面向小型组织入门服务器。" },
+  ]},
+  { sec:"Windows Server 半年度频道（SAC：20H2/2004/1909/1809）", items:[
+    { name:"Windows Server Standard", key:"N2KJX-J94YW-TQVFB-DG9YT-724CC", note:"半年度频道标准版，随 Windows 10 版本迭代更新。" },
+    { name:"Windows Server Datacenter", key:"6NMRW-2C8FM-D24W7-TQWMY-CWH2D", note:"半年度频道数据中心版，适合容器/微服务场景。" },
+  ]},
+  { sec:"早期 Windows Server（2012 R2 / 2012 / 2008 R2 / 2008）", items:[
+    { name:"Windows Server Standard", key:"PTXN8-JFHJM-4WC78-MPCBR-9W4KR", note:"通用密钥：适用于 2012 R2 / 2012 / 2008 R2 / 2008 标准版。" },
+    { name:"Windows Server Datacenter", key:"2HXDN-KRXHB-GPYC7-YCKFJ-7FVDG", note:"通用密钥：适用于 2012 R2 / 2012 / 2008 R2 / 2008 数据中心版。" },
+  ]},
+  { sec:"Office LTSC 2024", items:[
+    { name:"Office LTSC Professional Plus 2024", key:"XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB", note:"全组件套件：Word/Excel/PPT/Outlook/Access/Publisher/OneNote 等。" },
+    { name:"Office LTSC Standard 2024", key:"V28N4-JG22K-W66P8-VTMGK-H6HGR", note:"标准版：不含 Access、Publisher 等组件。" },
+    { name:"Project Professional 2024", key:"FQQ23-N4YCY-73HQ3-FM9WC-76HF4", note:"项目管理专业版，含资源管理/服务器连接。" },
+    { name:"Project Standard 2024", key:"PD3TT-NTHQQ-VC7CY-MFXK3-G87F8", note:"项目管理标准版，无服务器端协作功能。" },
+    { name:"Visio LTSC Professional 2024", key:"B7TN8-FJ8V3-7QYCP-HQPMV-YY89G", note:"专业绘图 / 流程图，含高级模板与数据连接。" },
+    { name:"Visio LTSC Standard 2024", key:"JMMVY-XFNQC-KK4HK-9H7R3-WQQTV", note:"基础绘图，无高级数据链接功能。" },
+    { name:"Access LTSC 2024", key:"82FTR-NCHR7-W3944-MGRHM-JMCWD", note:"桌面数据库应用。" },
+    { name:"Excel LTSC 2024", key:"F4DYN-89BP2-WQTWJ-GR8YC-CKGJG", note:"电子表格与数据分析。" },
+    { name:"Outlook LTSC 2024", key:"D2F8D-N3Q3B-J28PV-X27HD-RJWB9", note:"邮件、日历与联系人管理。" },
+    { name:"PowerPoint LTSC 2024", key:"CW94N-K6GJH-9CTXY-MG2VC-FYCWP", note:"演示文稿制作。" },
+    { name:"Skype for Business LTSC 2024", key:"4NKHF-9HBQF-Q3B6C-7YV34-F64P3", note:"企业即时通讯与在线会议。" },
+    { name:"Word LTSC 2024", key:"MQ84N-7VYDM-FXV7C-6K7CC-VFW9J", note:"文字处理与排版。" },
+  ]},
+  { sec:"Office LTSC 2021", items:[
+    { name:"Office LTSC Professional Plus 2021", key:"FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH", note:"全组件套件：Word/Excel/PPT/Outlook/Access/Publisher 等。" },
+    { name:"Office LTSC Standard 2021", key:"KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3", note:"标准版：不含 Access、Publisher。" },
+    { name:"Project Professional 2021", key:"FTNWT-C6WBT-8HMGF-K9PRX-QV9H8", note:"项目管理专业版。" },
+    { name:"Project Standard 2021", key:"J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T", note:"项目管理标准版。" },
+    { name:"Visio LTSC Professional 2021", key:"KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4", note:"专业绘图 / 流程图。" },
+    { name:"Visio LTSC Standard 2021", key:"MJVNY-BYWPY-CWV6J-2RKRT-4M8QG", note:"基础绘图。" },
+    { name:"Access LTSC 2021", key:"WM8YG-YNGDD-4JHDC-PG3F4-FC4T4", note:"桌面数据库应用。" },
+    { name:"Excel LTSC 2021", key:"NWG3X-87C9K-TC7YY-BC2G7-G6RVC", note:"电子表格与数据分析。" },
+    { name:"Outlook LTSC 2021", key:"C9FM6-3N72F-HFJXB-TM3V9-T86R9", note:"邮件、日历与联系人管理。" },
+    { name:"PowerPoint LTSC 2021", key:"TY7XF-NFRBR-KJ44C-G83KF-GX27K", note:"演示文稿制作。" },
+    { name:"Publisher LTSC 2021", key:"2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ", note:"桌面排版与出版。" },
+    { name:"Skype for Business LTSC 2021", key:"HWCXN-K3WBT-WJBKY-R8BD9-XK29P", note:"企业即时通讯与在线会议。" },
+    { name:"Word LTSC 2021", key:"TN8H9-M34D3-Y64V9-TR72V-X79KV", note:"文字处理与排版。" },
+  ]},
+  { sec:"Office 2019", items:[
+    { name:"Office Professional Plus 2019", key:"NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP", note:"全组件套件：Word/Excel/PPT/Outlook/Access/Publisher 等。" },
+    { name:"Office Standard 2019", key:"6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK", note:"标准版：不含 Access、Publisher。" },
+    { name:"Project Professional 2019", key:"B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B", note:"项目管理专业版。" },
+    { name:"Project Standard 2019", key:"C4F7P-NCP8C-6CQPT-MQHV9-JXD2M", note:"项目管理标准版。" },
+    { name:"Visio Professional 2019", key:"9BGNQ-K37YR-RQHF2-38RQ3-7VCBB", note:"专业绘图 / 流程图。" },
+    { name:"Visio Standard 2019", key:"7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2", note:"基础绘图。" },
+    { name:"Access 2019", key:"9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT", note:"桌面数据库应用。" },
+    { name:"Excel 2019", key:"TMJWT-YYNMB-3BKTF-644FC-RVXBD", note:"电子表格与数据分析。" },
+    { name:"Outlook 2019", key:"7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK", note:"邮件、日历与联系人管理。" },
+    { name:"PowerPoint 2019", key:"RRNCX-C64HY-W2MM7-MCH9G-TJHMQ", note:"演示文稿制作。" },
+    { name:"Publisher 2019", key:"G2KWX-3NW6P-PY93R-JXK2T-C9Y9V", note:"桌面排版与出版。" },
+    { name:"Skype for Business 2019", key:"NCJ33-JHBBY-HTK98-MYCV8-HMKHJ", note:"企业即时通讯与在线会议。" },
+    { name:"Word 2019", key:"PBX3G-NWMT6-Q7XBW-PYJGG-WXD33", note:"文字处理与排版。" },
+  ]},
+  { sec:"Office 2016", items:[
+    { name:"Office Professional Plus 2016", key:"XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99", note:"全组件套件：含 OneNote 等完整组件。" },
+    { name:"Office Standard 2016", key:"JNRGM-WHDWX-FJJG3-K47QV-DRTFM", note:"标准版：不含 Access、Publisher。" },
+    { name:"Project Professional 2016", key:"YG9NW-3K39V-2T3HJ-93F3Q-G83KT", note:"项目管理专业版。" },
+    { name:"Project Standard 2016", key:"GNFHQ-F6YQM-KQDGJ-327XX-KQBVC", note:"项目管理标准版。" },
+    { name:"Visio Professional 2016", key:"PD3PC-RHNGV-FXJ29-8JK7D-RJRJK", note:"专业绘图 / 流程图。" },
+    { name:"Visio Standard 2016", key:"7WHWN-4T7MP-G96JF-G33KR-W8GF4", note:"基础绘图。" },
+    { name:"Access 2016", key:"GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW", note:"桌面数据库应用。" },
+    { name:"Excel 2016", key:"9C2PK-NWTVB-JMPW8-BFT28-7FTBF", note:"电子表格与数据分析。" },
+    { name:"OneNote 2016", key:"DR92N-9HTF2-97XKM-XW2WJ-XW3J6", note:"数字笔记整理（UWP 版停更后建议桌面版）。" },
+    { name:"Outlook 2016", key:"R69KK-NTPKF-7M3Q4-QYBHW-6MT9B", note:"邮件、日历与联系人管理。" },
+    { name:"PowerPoint 2016", key:"J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6", note:"演示文稿制作。" },
+    { name:"Publisher 2016", key:"F47MM-N3XJP-TQXJ9-BP99D-8K837", note:"桌面排版与出版。" },
+    { name:"Skype for Business 2016", key:"869NQ-FJ69K-466HW-QYCP2-DDBV6", note:"企业即时通讯与在线会议。" },
+    { name:"Word 2016", key:"WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6", note:"文字处理与排版。" },
+  ]},
+];
+
+const result = document.getElementById('result');
+const search = document.getElementById('search');
+const countEl = document.getElementById('count');
+
+function render(q){
+  q = (q||"").trim().toLowerCase();
+  let total = 0;
+  let html = "";
+  DATA.forEach(sec=>{
+    const items = sec.items.filter(it=>{
+      if(!q) return true;
+      return (it.name+" "+it.key+" "+(it.note||"")).toLowerCase().includes(q);
+    });
+    if(items.length===0) return;
+    total += items.length;
+    let rows = items.map(it=>`
+      <tr>
+        <td><span class="pname">${esc(it.name)}</span>${it.note?`<div class="pnote">${esc(it.note)}</div>`:""}</td>
+        <td><span class="key">${esc(it.key)}</span></td>
+        <td><button class="copy" data-key="${esc(it.key)}">复制</button></td>
+      </tr>`).join("");
+    html += `<section>
+      <div class="sec-h"><h2>${esc(sec.sec)}</h2><span class="badge">${items.length} 条</span></div>
+      <table>
+        <thead><tr><th>产品 / 版本</th><th>GVLK 密钥</th><th style="width:90px"></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </section>`;
+  });
+  if(total===0){
+    html = `<div class="empty">没有匹配「${esc(q)}」的结果，换个关键词试试。</div>`;
+  }
+  result.innerHTML = html;
+  countEl.textContent = q ? `匹配 ${total} 条` : `共 ${total} 条`;
+}
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+result.addEventListener('click',e=>{
+  const btn = e.target.closest('.copy');
+  if(!btn) return;
+  const k = btn.getAttribute('data-key');
+  navigator.clipboard.writeText(k).then(()=>{
+    const old = btn.textContent;
+    btn.textContent = "已复制"; btn.classList.add('done');
+    setTimeout(()=>{btn.textContent=old; btn.classList.remove('done');},1400);
+  }).catch(()=>{ alert("复制失败，请手动选择密钥复制：\n"+k); });
+});
+
+search.addEventListener('input',e=>render(e.target.value));
+render("");
+</script>
+<script src="assets/js/site-nav.js"></script>
+</body>
+</html>
