@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel 至强 E3-1200 v1 系列 CPU 参数大全</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --warn:#b8860b; --noig:#d9534f; --yes:#2e9e5b; --low:#3a7bd5;
+    --chip:#eef3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:24px}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .tagrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  h2 .bar{width:6px;height:20px;border-radius:3px;background:var(--brand)}
+  .lead{color:var(--sub);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat b{display:block;font-size:17px;color:var(--brand)}
+  .stat span{font-size:12px;color:var(--sub)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+  th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--line)}
+  thead th{background:#f0f4f9;color:var(--ink);font-weight:600;position:sticky;top:0}
+  tbody tr:hover{background:#f6faff}
+  td.name{font-weight:700;color:var(--brand);text-align:left;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .p-yes{background:#e7f6ee;color:var(--yes)}
+  .p-no{background:#fdeaea;color:var(--noig)}
+  .p-low{background:#e7eefb;color:var(--low)}
+  .p-ig{background:#fff3d6;color:var(--warn)}
+  .note{font-size:12px;color:var(--sub);text-align:left}
+  /* bar chart */
+  .chart{margin-top:8px}
+  .row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.5px}
+  .row .lbl{width:74px;text-align:right;font-weight:600;color:var(--brand);white-space:nowrap}
+  .track{flex:1;background:#eef1f5;border-radius:6px;height:18px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3a7bd5,#0a66c2)}
+  .row .val{width:64px;color:var(--sub)}
+  .legend{font-size:12px;color:var(--sub);margin-top:10px}
+  .legend code{background:var(--chip);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+  ul.tips{margin:8px 0 0;padding-left:20px}
+  ul.tips li{margin:6px 0;font-size:13.5px}
+  .callout{border-left:4px solid var(--brand2);background:#eefaf6;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .callout b{color:var(--brand2)}
+  footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
+  a{color:var(--brand)}
+  @media(max-width:680px){.row .lbl{width:60px}.row .val{width:52px}th,td{padding:7px 6px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Intel 至强 E3-1200 v1 系列 CPU 参数大全</h1>
+  <p>Sandy Bridge 架构 · LGA 1155 接口 · 32nm 制程 · 2011 年发布 · 服务器/工作站入门至强</p>
+  <div class="tagrow">
+    <span class="tag">代号 Sandy Bridge</span>
+    <span class="tag">接口 LGA 1155</span>
+    <span class="tag">内存 DDR3-1333</span>
+    <span class="tag">PCIe 2.0</span>
+    <span class="tag">支持 AVX（无 AVX2）</span>
+    <span class="tag">共 12 款 SKU</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="bar"></span>一、系列概览</h2>
+  <p class="lead">E3-1200 v1 是英特尔 2011 年 Q2 推出的入门级单路至强，基于与二代酷睿（Core i 2000 系）相同的 Sandy Bridge 内核，主打低成本服务器、NAS、工作站与"洋垃圾"装机市场。核心卖点是 <b>用接近 i5 的价钱买到 4 核 8 线程</b>。</p>
+  <div class="grid">
+    <div class="stat"><b>Sandy Bridge</b><span>微架构（与 i7-2600 同源）</span></div>
+    <div class="stat"><b>32 nm</b><span>制程工艺</span></div>
+    <div class="stat"><b>LGA 1155</b><span>物理接口</span></div>
+    <div class="stat"><b>DDR3-1333</b><span>双通道，最大 32GB</span></div>
+    <div class="stat"><b>80 / 95 W</b><span>主流 TDP（含 20/45W 低功耗）</span></div>
+    <div class="stat"><b>AVX</b><span>支持 AVX，不支持 AVX2</span></div>
+  </div>
+  <div class="callout"><b>后缀速记：</b>型号中带 <b>5</b> 的（如 1235/1245/1275）内置核显 HD Graphics P3000，可免独显亮机、支持 Quick Sync 转码；不带 5 的（1230/1240/1270 等）无核显，必须搭配独立显卡。带 <b>L</b> 的为低功耗版，<b>数字越大频率越高</b>。</div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>二、v1 全型号参数表（12 款）</h2>
+  <p class="lead">数据来源：Intel ARK 官方规格，交叉核对联想 ThinkStation E30 与第三方数据库。HT=超线程技术。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr>
+        <th>型号</th><th>核心/线程</th><th>基础频率</th><th>最大睿频</th><th>L3 缓存</th>
+        <th>TDP</th><th>核显</th><th>HT</th><th>发布</th><th>定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">E3-1220L</td><td>2 / 4</td><td>2.2 GHz</td><td>3.4 GHz</td><td>3 MB</td><td>20 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">超低功耗双核</td></tr>
+      <tr><td class="name">E3-1220</td><td>4 / 4</td><td>3.1 GHz</td><td>3.4 GHz</td><td>8 MB</td><td>80 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-no">否</span></td><td>Q2'11</td><td class="note">入门、无超线程</td></tr>
+      <tr><td class="name">E3-1225</td><td>4 / 4</td><td>3.1 GHz</td><td>3.4 GHz</td><td>6 MB</td><td>95 W</td><td><span class="pill p-ig">P3000</span></td><td><span class="pill p-no">否</span></td><td>Q2'11</td><td class="note">带核显、无 HT</td></tr>
+      <tr><td class="name">E3-1230</td><td>4 / 8</td><td>3.2 GHz</td><td>3.6 GHz</td><td>8 MB</td><td>80 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">★ 神 U / 主流性价比</td></tr>
+      <tr><td class="name">E3-1235</td><td>4 / 8</td><td>3.2 GHz</td><td>3.6 GHz</td><td>8 MB</td><td>95 W</td><td><span class="pill p-ig">P3000</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">带核显主流</td></tr>
+      <tr><td class="name">E3-1240</td><td>4 / 8</td><td>3.3 GHz</td><td>3.7 GHz</td><td>8 MB</td><td>80 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">高频无核显</td></tr>
+      <tr><td class="name">E3-1245</td><td>4 / 8</td><td>3.3 GHz</td><td>3.7 GHz</td><td>8 MB</td><td>95 W</td><td><span class="pill p-ig">P3000</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">高频带核显</td></tr>
+      <tr><td class="name">E3-1260L</td><td>4 / 8</td><td>2.4 GHz</td><td>3.3 GHz</td><td>8 MB</td><td>45 W</td><td><span class="pill p-ig">P3000</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">低功耗（NAS/软路由）</td></tr>
+      <tr><td class="name">E3-1270</td><td>4 / 8</td><td>3.4 GHz</td><td>3.8 GHz</td><td>8 MB</td><td>80 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">高频主流</td></tr>
+      <tr><td class="name">E3-1275</td><td>4 / 8</td><td>3.4 GHz</td><td>3.8 GHz</td><td>8 MB</td><td>95 W</td><td><span class="pill p-ig">P3000</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">高频带核显</td></tr>
+      <tr><td class="name">E3-1280</td><td>4 / 8</td><td>3.5 GHz</td><td>3.9 GHz</td><td>8 MB</td><td>95 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'11</td><td class="note">旗舰无核显</td></tr>
+      <tr><td class="name">E3-1290</td><td>4 / 8</td><td>3.6 GHz</td><td>4.0 GHz</td><td>8 MB</td><td>95 W</td><td><span class="pill p-no">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'11</td><td class="note">旗舰（最晚发布）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：E3-1260L 与 E3-1220L 为低功耗型号；另有 OEM 专用的 <code>E3-1265L</code>（4C/8T，2.4/3.3 GHz，45W，核显 P3000），未公开零售。带 5 后缀型号需搭配 C206 芯片组才能启用工作站级核显优化。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>三、最大睿频直观对比</h2>
+  <p class="lead">横向条形按最大睿频（Turbo）长度排序，4.0 GHz 为满格基准。可见 12x0/12x5 系列频率梯度非常规整。</p>
+  <div class="chart">
+    <div class="row"><span class="lbl">E3-1290</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">4.0 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1280</span><div class="track"><div class="fill" style="width:97.5%"></div></div><span class="val">3.9 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1270/75</span><div class="track"><div class="fill" style="width:95%"></div></div><span class="val">3.8 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1240/45</span><div class="track"><div class="fill" style="width:92.5%"></div></div><span class="val">3.7 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1230/35</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">3.6 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1220/25/L</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="val">3.4 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1260L</span><div class="track"><div class="fill" style="width:82.5%"></div></div><span class="val">3.3 GHz</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>四、历代 E3-1200 演进（"等系列"对照）</h2>
+  <p class="lead">E3 平台共历经 v1～v5 五代，接口与特性差异明显，选购时务必确认主板代际。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>代次</th><th>架构</th><th>制程</th><th>接口</th><th>内存</th><th>指令集</th><th>年份</th></tr></thead>
+    <tbody>
+      <tr><td class="name">E3-1200 v1</td><td>Sandy Bridge</td><td>32 nm</td><td>LGA 1155</td><td>DDR3-1333</td><td>AVX</td><td>2011</td></tr>
+      <tr><td class="name">E3-1200 v2</td><td>Ivy Bridge</td><td>22 nm</td><td>LGA 1155</td><td>DDR3-1600</td><td>AVX</td><td>2012</td></tr>
+      <tr><td class="name">E3-1200 v3</td><td>Haswell</td><td>22 nm</td><td>LGA 1150</td><td>DDR3-1600</td><td>AVX2</td><td>2013</td></tr>
+      <tr><td class="name">E3-1200 v4</td><td>Broadwell</td><td>14 nm</td><td>LGA 1150</td><td>DDR3-1866</td><td>AVX2</td><td>2015</td></tr>
+      <tr><td class="name">E3-1200 v5</td><td>Skylake</td><td>14 nm</td><td>LGA 1151</td><td>DDR3/DDR4</td><td>AVX2</td><td>2015</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注意：v1/v2 共用 LGA 1155（但互不兼容），v3/v4 共用 LGA 1150，v5 换用 LGA 1151 且需 C232/C236 服务器芯片组，<b>不能</b>插在消费级 Z170 上。v3 起才支持 AVX2。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>五、平台兼容与选购建议</h2>
+  <ul class="tips">
+    <li><b>主板芯片组：</b>服务器用 C202/C204/C206（C206 支持 ECC 内存与 IPMI）；消费级 H61、B75、Q77、Z77 等多数可上（需 BIOS 含 Xeon 微码，老主板建议先刷最新 BIOS）。</li>
+    <li><b>内存：</b>消费板用普通 DDR3 非 ECC；C2xx 服务器板可用 DDR3 ECC UDIMM。双通道，频率最高 1333 MT/s，带宽约 21 GB/s，最大 32 GB。</li>
+    <li><b>核显：</b>仅 12x5 系列（1235/1245/1275/1260L）带 HD Graphics P3000，可免独显亮机并支持视频转码；其余型号必须配独显。</li>
+    <li><b>PCIe：</b>CPU 提供 20 条 PCIe 2.0 通道（典型 ×16 显卡 + ×4 扩展）。</li>
+    <li><b>指令集：</b>支持 AVX / AES-NI / VT-x / VT-d / TXT，但<b>不支持 AVX2</b>——部分新软件（如某些 AI 推理、新版编解码器）会回退到较慢路径。</li>
+  </ul>
+  <div class="callout">
+    <b>怎么选：</b>
+    <br>• 预算游戏/生产力主机 → <b>E3-1230 / 1240 / 1270</b>（80W、4C8T、无核显，配独显最划算）；
+    <br>• 需要核显亮机或转码（软路由/NAS/轻量 HTPC）→ 选 <b>12x5</b> 带核显型号；
+    <br>• 低功耗 NAS / 7×24 开机 → <b>E3-1260L</b>（45W）甚至 E3-1220L（20W）；
+    <br>• 追求最高单核 → <b>E3-1290</b>（4.0 GHz 睿频），但价格与功耗也最高；
+    <br>• <b>避开</b> E3-1220 / E3-1225：同为 4 核却无超线程，多线程性能明显落后同价 1230。
+  </div>
+</section>
+
+<footer>
+  数据来源：Intel ARK 产品规格库、联想 ThinkStation E30 官方规格表、公开第三方数据库（截至 2026-08）。<br>
+  本页为静态离线资料，规格以 Intel 官方 ARK 为准。参数可能随版本变动，装机前请再次核对。
+</footer>
+
+</div>
+</body>
+</html>

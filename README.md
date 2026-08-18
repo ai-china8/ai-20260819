@@ -1,20 +1,41 @@
-# MySite — 静态网站（GitHub Pages）
+# 至强 CPU 参数库 — 静态网站（GitHub Pages）
 
-这是一个纯静态网站骨架，由 HTML / CSS / JavaScript 构成，可一键托管到 GitHub Pages。
+这是一个纯静态的 Intel Xeon 参数速查站，由单文件 HTML 构成，可一键托管到 GitHub Pages。
+首页 `index.html` 按系列分类索引所有参数页，并带关键词实时搜索（样式内联，无外部依赖）。
 
 ## 目录结构
 
 ```
 my-website/
-├── index.html            # 首页（入口页面）
-├── assets/
-│   ├── css/style.css     # 样式
-│   └── js/main.js        # 交互脚本（移动端菜单、页脚年份）
-├── .nojekyll             # 告诉 GitHub Pages 不要跑 Jekyll
+├── index.html                              # 首页：分类导航 + 搜索（自包含）
+├── 至强E-2100系列参数大全.html
+├── 至强E-2200系列参数大全.html
+├── 至强E3-1200-v1~v6系列参数大全.html      # 6 个文件（v1~v6）
+├── 至强W-1200 / W-1300 / W-2100系列参数大全.html  # 3 个文件
+├── i3-8100对比Xeon-E2124G与E3-1225v6.html  # 横向对比页
+├── .nojekyll             # 禁用 Jekyll，静态文件原样发布
 ├── CNAME                 # 自定义域名：ai-chin-a.space
 ├── .gitignore
 └── README.md
 ```
+
+> 说明：`assets/` 为早期骨架遗留（本站所有页面均已内联样式，不再引用），可保留可删除。
+
+## 内容页清单
+
+| 分类 | 文件 |
+| --- | --- |
+| 至强 E-2100 / E-2200 | `至强E-2100系列参数大全.html`、`至强E-2200系列参数大全.html` |
+| 至强 E3-1200 v1–v6 | `至强E3-1200-v1~v6系列参数大全.html`（共 6 个） |
+| 至强 W 系列 | `至强W-1200`、`至强W-1300`、`至强W-2100系列参数大全.html` |
+| 横向对比 | `i3-8100对比Xeon-E2124G与E3-1225v6.html` |
+
+### 如何新增一个 CPU 参数页
+1. 把做好的单文件 HTML 放进本目录（命名建议 `至强XXXX系列参数大全.html`）。
+2. 打开 `index.html`，在对应 `<section class="cat">` 下复制一张 `<a class="card">` 卡片，改 `href`、标题与描述即可。
+3. `git add . && git commit && git push`，GitHub Pages 会自动更新。
+
+
 
 ## 本地预览
 

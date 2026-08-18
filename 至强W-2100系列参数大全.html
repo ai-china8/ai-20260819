@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel 至强 W-2100 系列 CPU 参数大全</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --warn:#b8860b; --noig:#d9534f; --yes:#2e9e5b; --low:#3a7bd5;
+    --iris:#6f42c1; --chip:#eef3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:24px}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .tagrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  h2 .bar{width:6px;height:20px;border-radius:3px;background:var(--brand)}
+  .lead{color:var(--sub);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat b{display:block;font-size:17px;color:var(--brand)}
+  .stat span{font-size:12px;color:var(--sub)}
+  .tablescroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:0}
+  th,td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--line)}
+  thead th{background:#f0f4f9;color:var(--ink);font-weight:600;position:sticky;top:0}
+  tbody tr:hover{background:#f6faff}
+  td.name{font-weight:700;color:var(--brand);text-align:left;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .p-yes{background:#e7f6ee;color:var(--yes)}
+  .p-no{background:#fdeaea;color:var(--noig)}
+  .p-low{background:#e7eefb;color:var(--low)}
+  .p-ig{background:#fff3d6;color:var(--warn)}
+  .p-iris{background:#efe9fb;color:var(--iris)}
+  .p-na{background:#eef0f3;color:#777}
+  .note{font-size:12px;color:var(--sub);text-align:left}
+  .chart{margin-top:8px}
+  .row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.5px}
+  .row .lbl{width:118px;text-align:right;font-weight:600;color:var(--brand);white-space:nowrap}
+  .track{flex:1;background:#eef1f5;border-radius:6px;height:18px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3a7bd5,#0a66c2)}
+  .row .val{width:64px;color:var(--sub)}
+  .legend{font-size:12px;color:var(--sub);margin-top:10px}
+  .legend code{background:var(--chip);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+  ul.tips{margin:8px 0 0;padding-left:20px}
+  ul.tips li{margin:6px 0;font-size:13.5px}
+  .callout{border-left:4px solid var(--brand2);background:#eefaf6;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .callout b{color:var(--brand2)}
+  .delta{border-left:4px solid var(--brand);background:#eef4fb;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .delta b{color:var(--brand)}
+  .warnbox{border-left:4px solid var(--warn);background:#fffaf0;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .warnbox b{color:var(--warn)}
+  footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
+  a{color:var(--brand)}
+  @media(max-width:760px){.row .lbl{width:80px}.row .val{width:52px}th,td{padding:6px 5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Intel 至强 W-2100 系列 CPU 参数大全</h1>
+  <p>Skylake-W 架构 · LGA 2066 接口 · 14nm 制程 · 2017 发布 · <b>Xeon W 工作站高端系列首代（全系支持 AVX-512）</b></p>
+  <div class="tagrow">
+    <span class="tag">代号 Skylake-W</span>
+    <span class="tag">接口 LGA 2066</span>
+    <span class="tag">X299 芯片组</span>
+    <span class="tag">4 通道 DDR4</span>
+    <span class="tag">支持 AVX-512</span>
+    <span class="tag">最高 18 核 36 线程</span>
+    <span class="tag">10 款标准 SKU</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="bar"></span>一、系列概览</h2>
+  <p class="lead">Xeon W-2100 是 2017 年 8 月推出的<b>工作站高端（HEDT）</b>处理器，基于与初代至强可扩展（Skylake-SP）及酷睿 X 系列（i9-7900X 等）同源的 <b>Skylake-W</b> 内核，采用 mesh 互联。它与前面做过的 E-2100/E-2200（入门单路）是<b>完全不同的产品线</b>：接口是 LGA 2066、走 X299 平台、四通道内存、最高 18 核，并且 <b>唯一在本系列里支持 AVX-512</b>。</p>
+  <div class="grid">
+    <div class="stat"><b>Skylake-W</b><span>微架构（与至强可扩展/酷睿X同源）</span></div>
+    <div class="stat"><b>14 nm</b><span>制程（Skylake-SP 同节点）</span></div>
+    <div class="stat"><b>LGA 2066</b><span>接口（Socket R4 / FCLGA2066）</span></div>
+    <div class="stat"><b>4 通道 DDR4</b><span>DDR4-2666，最大 512GB</span></div>
+    <div class="stat"><b>120 / 140 W</b><span>TDP 跨度（桌面 W）</span></div>
+    <div class="stat"><b>AVX-512</b><span>支持 AVX-512 / AVX2 / FMA3</span></div>
+  </div>
+  <div class="warnbox"><b>⚠ 与 E-2100/E-2200 不是同一代、不通用的平台：</b> W-2100 用 <b>LGA 2066 + X299（C422）</b>芯片组，而 E-2100/E-2200 用 LGA 1151 v2 + C242/C246。两者<b>接口、主板、内存通道全不同，不能混用</b>。反过来说，W-2100 与同代酷睿 X 系列（i9-7900X/i7-7820X 等）共用 X299 平台，<b>没有 E 系列的"服务器芯片组封锁"</b>——很多 W-2100 甚至能插在消费级 X299 主板上。但代价是：<b>全系无核显（headless），必须配独显</b>。</div>
+  <div class="callout"><b>后缀速记：</b>W-2100 <b>全系无 G 后缀、无核显</b>（纯算力工作站 U，需独显）。<b>W-2102 / W-2104</b> 为入门 4C/4T，<b>且无超线程、无睿频</b>（基础频率 = 最大频率）；<b>W-2123</b> 起带超线程（4C/8T）。核心数随编号递增：4（W-21x2/21x3/21x4/21x5）→ 6（W-2133/2135）→ 8（W-2145）→ 10（W-2155）→ 14（W-2175）→ 18（W-2195，旗舰）。带 <b>B</b> 后缀（W-2140B/2150B/2170B/2191B）为<b>苹果 Mac Pro / iMac Pro 独家 OEM 版</b>（见第四节）。</div>
+  <div class="delta"><b>相对 E-2100/E-2200 的关键不同：</b>① 接口 LGA 1151 v2 → <b>LGA 2066</b>；② 芯片组 C242/C246 → <b>X299（C422）</b>，可上消费级 HEDT 板；③ 内存 双通道 → <b>四通道 DDR4</b>，最大 512GB；④ 指令集 仅 AVX2 → <b>新增 AVX-512</b>（F/B/MASK 全子集，跑科学计算/加密/AI 推理明显快）；⑤ 核显 UHD P630 → <b>全系无核显</b>；⑥ 核心数上限 8C → <b>18C</b>（W-2195）；⑦ PCIe 3.0 通道 16 → <b>44</b>（4 核款 28）；⑧ TDP 71–95W → <b>120–140W</b>（更高功耗、需更强散热）。</div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>二、W-2100 全型号参数表（10 款标准 SKU · 完整家族）</h2>
+  <p class="lead">数据来源：Intel ARK 官方 Xeon W 处理器家族页（90 款，含 W-2100 全系）+ Wikipedia《List of Intel Xeon processors (Skylake-based)》W-2100 表 + CPU-World / CPU-Upgrade 交叉确认。HT=超线程。以下 10 款均为 <b>LGA 2066 可插拔</b>，全系无核显、无睿频型号见 W-2102/2104。</p>
+  <div class="tablescroll">
+  <table>
+    <thead>
+      <tr>
+        <th>型号</th><th>核心/线程</th><th>基础频率</th><th>最大睿频</th><th>L3</th>
+        <th>TDP</th><th>核显</th><th>HT</th><th>发布</th><th>定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">W-2195</td><td>18 / 36</td><td>2.30 GHz</td><td>4.30 GHz</td><td>24.75 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">★ 旗舰 18C/36T</td></tr>
+      <tr><td class="name">W-2175</td><td>14 / 28</td><td>2.50 GHz</td><td>4.30 GHz</td><td>19.25 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">14C/28T 多核</td></tr>
+      <tr><td class="name">W-2155</td><td>10 / 20</td><td>3.30 GHz</td><td>4.50 GHz</td><td>13.75 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">10C/20T 高频</td></tr>
+      <tr><td class="name">W-2145</td><td>8 / 16</td><td>3.70 GHz</td><td>4.50 GHz</td><td>11.00 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">8C/16T 高频</td></tr>
+      <tr><td class="name">W-2135</td><td>6 / 12</td><td>3.70 GHz</td><td>4.50 GHz</td><td>8.25 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">高频 6C/12T</td></tr>
+      <tr><td class="name">W-2133</td><td>6 / 12</td><td>3.60 GHz</td><td>3.90 GHz</td><td>8.25 MB</td><td>140 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">6C/12T</td></tr>
+      <tr><td class="name">W-2125</td><td>4 / 8</td><td>4.00 GHz</td><td>4.50 GHz</td><td>8.25 MB</td><td>120 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">高频 4C/8T</td></tr>
+      <tr><td class="name">W-2123</td><td>4 / 8</td><td>3.60 GHz</td><td>3.90 GHz</td><td>8.25 MB</td><td>120 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">4C/8T 带 HT</td></tr>
+      <tr><td class="name">W-2104</td><td>4 / 4</td><td>3.20 GHz</td><td>3.20 GHz</td><td>8.25 MB</td><td>120 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-no">否</span></td><td>Q3'17</td><td class="note">入门 4C/4T 无HT/无睿频</td></tr>
+      <tr><td class="name">W-2102</td><td>4 / 4</td><td>2.90 GHz</td><td>2.90 GHz</td><td>8.25 MB</td><td>120 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-no">否</span></td><td>Q3'17</td><td class="note">★ 最低端 无HT/无睿频</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：全 10 款均为 <code>LGA 2066</code> 可插拔，搭配 <code>X299（C422）</code> 工作站/ HEDT 主板，<b>全系无核显需独显</b>。<b>W-2102 / W-2104 无超线程、无睿频</b>（基础=最大）；<b>W-2123</b> 起带超线程。内存：W-2102/2104 为 DDR4-2400，其余 DDR4-2666，四通道，最大 512GB。另有 4 款苹果独家 "B" 变体（见第四节）。★ 你提到的 <b>W-2102</b> 即本表最后一行——家族最低端，4C/4T、无 HT、无睿频，价格仅约 $202。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>三、最大睿频直观对比</h2>
+  <p class="lead">横向条形按最大睿频（1 核 Turbo）长度排序，<b>4.50 GHz</b>（W-2125/W-2135/W-2145/W-2155）为满格基准。W-2100 高频型号顶到 4.5GHz，18 核旗舰 W-2195 因多核定位睿频仅 4.3GHz，入门 W-2102/2104 无睿频（2.9/3.2GHz）。</p>
+  <div class="chart">
+    <div class="row"><span class="lbl">W-2125 / W-2135 / W-2145 / W-2155</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">4.5 GHz</span></div>
+    <div class="row"><span class="lbl">W-2195 / W-2175</span><div class="track"><div class="fill" style="width:95.6%"></div></div><span class="val">4.3 GHz</span></div>
+    <div class="row"><span class="lbl">W-2123 / W-2133</span><div class="track"><div class="fill" style="width:86.7%"></div></div><span class="val">3.9 GHz</span></div>
+    <div class="row"><span class="lbl">W-2104</span><div class="track"><div class="fill" style="width:71.1%"></div></div><span class="val">3.2 GHz</span></div>
+    <div class="row"><span class="lbl">W-2102</span><div class="track"><div class="fill" style="width:64.4%"></div></div><span class="val">2.9 GHz</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>四、苹果独家 "B" 变体（OEM · 同代 W-2100 家族）</h2>
+  <p class="lead">除 10 款标准 SKU 外，Intel 同期为苹果 Mac Pro / iMac Pro 推出了 4 款 "B" 后缀 OEM 型号（2017-12 发布），规格与对应标准版接近、但 TDP/频率略有差异，均为 <b>LGA 2066</b>、无核显。下列补全完整家族。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>型号</th><th>核心/线程</th><th>基础/最大睿频</th><th>L3</th><th>TDP</th><th>对应标准版</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="name">W-2140B</td><td>8 / 16</td><td>3.20 / 4.20 GHz</td><td>11.00 MB</td><td>120 W</td><td>≈ W-2145</td><td>苹果 Mac 独家</td></tr>
+      <tr><td class="name">W-2150B</td><td>10 / 20</td><td>3.00 / 4.50 GHz</td><td>13.75 MB</td><td>120 W</td><td>≈ W-2155</td><td>苹果 Mac 独家</td></tr>
+      <tr><td class="name">W-2170B</td><td>14 / 28</td><td>2.50 / 4.30 GHz</td><td>19.25 MB</td><td>140 W</td><td>≈ W-2175</td><td>苹果 Mac 独家</td></tr>
+      <tr><td class="name">W-2191B</td><td>18 / 36</td><td>2.30 / 4.30 GHz</td><td>24.75 MB</td><td>140 W</td><td>≈ W-2195</td><td>苹果 Mac 独家</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：以上 4 款 "B" 变体为苹果整机 OEM，不零售、不单独上架，参数基本等于对应标准版但调校不同（如 W-2140B/W-2150B 为 120W 低功耗版）。普通装机用户选上方 10 款标准 SKU 即可。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>五、Xeon W 系列演进（W-2100 起）</h2>
+  <p class="lead">Xeon W 是 Intel 工作站高端（HEDT）品牌，随年份与架构迭代。W-2100 为初代（Skylake-W），后续逐步提升核心数与接口。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>代次</th><th>架构</th><th>接口</th><th>芯片组</th><th>内存</th><th>最高核/线程</th><th>年份</th><th>AVX-512</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Xeon W-2100</td><td>Skylake-W</td><td>LGA 2066</td><td>X299 (C422)</td><td>DDR4-2666 4ch</td><td><b>18C/36T</b></td><td>2017</td><td>是</td></tr>
+      <tr><td class="name">Xeon W-2200</td><td>Cascade Lake-W</td><td>LGA 2066</td><td>X299 (C422)</td><td>DDR4-2933 4ch</td><td>18C/36T</td><td>2019</td><td>是</td></tr>
+      <tr><td class="name">Xeon W-3200</td><td>Cascade Lake-W</td><td>LGA 3647</td><td>C621/622</td><td>DDR4 6ch</td><td>28C/56T</td><td>2019</td><td>是</td></tr>
+      <tr><td class="name">Xeon W-3300</td><td>Ice Lake-W</td><td>LGA 4189</td><td>C621A</td><td>DDR4-3200 8ch</td><td>38C/76T</td><td>2021</td><td>是</td></tr>
+      <tr><td class="name">Xeon W-2400/3400</td><td>Sapphire Rapids-W</td><td>LGA 4677</td><td>W790</td><td>DDR5 4/8ch</td><td>56C/112T</td><td>2023</td><td>是(AVX-512 部分)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注意：W-2100 与 W-2200 同为 LGA 2066 + X299，可共用主板（BIOS 更新）；W-3200 起换 LGA 3647，W-3300 起 LGA 4189，W-2400/3400 起 LGA 4677。与入门 E 系列（LGA 1151 v2 + C242/C246）完全不通用于同一主板。<b>W 全系带 AVX-512</b>（这是与 E-2100/E-2200 的本质区别，也是你那台 E5-4627 v2 缺 AVX2 时少有的"补齐"选择）。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>六、平台兼容与选购建议</h2>
+  <ul class="tips">
+    <li><b>主板芯片组（关键）：</b>必须用 <b>X299（C422）</b> 工作站/ HEDT 主板（如华硕 WS X299 Sage、技嘉 X299-WU8、超微 X299 工作站板）。<b>不是</b> C242/C246，也<b>不是</b> 消费级 Z 系——它和酷睿 X 系列（i9-7900X 等）共用 X299 平台，但 W-2100 支持 ECC 与 vPro/RSTe 等工作站特性。</li>
+    <li><b>内存：</b>四通道 <b>DDR4-2666</b>（W-2102/2104 为 2400），ECC RDIMM/LRDIMM，<b>最大 512GB</b>（需主板与 CPU 支持）；相比 E 系列的双通道 128GB 容量大 4 倍。</li>
+    <li><b>核显：</b><b>全系无核显（headless）</b>，必须配独立显卡（含亮机卡）。</li>
+    <li><b>指令集（亮点）：</b>支持 <b>AVX-512 / AVX2 / FMA3 / AES-NI / TSX-NI / vPro / VT-x / VT-d</b>；PCIe 3.0，CPU 提供 <b>28–44 条</b>（4 核款 28，其余 44），X299 另提供通道。<b>这是与 E-2100/E-2200（仅 AVX2）及你 E5-4627 v2（连 AVX2 都没有）的关键差异</b>——跑依赖 AVX-512 的科学计算/加密/AI 推理会明显更快。</li>
+    <li><b>功耗散热：</b>TDP 120W（4 核）/ 140W（6–18 核），远高于 E 系列，需塔式/水冷强力散热；机箱与电源要按 140W + 独显预留余量。</li>
+  </ul>
+  <div class="callout">
+    <b>怎么选（W-2100 适用场景）：</b>
+    <br>• <b>最强多核工作站 / 渲染 / 编译 / 虚拟机</b> → <b>W-2195</b>（18C/36T，4.3GHz，140W）或 <b>W-2175</b>（14C/28T，性价比更高）。
+    <br>• <b>高频 + 多核兼顾（游戏/单线程 + 生产力）</b> → <b>W-2155</b>（10C/20T，4.5GHz）或 <b>W-2145</b>（8C/16T，4.5GHz）。
+    <br>• <b>高频 6 核</b> → <b>W-2135</b>（3.7/4.5，140W），比同代 i7-7820X 多了 ECC/vPro 工作站特性。
+    <br>• <b>预算入门 / 轻度多任务</b> → <b>W-2123</b>（4C/8T，带 HT，约 $294）或 <b>W-2104</b>（4C/4T，无 HT，约 $255）；<b>W-2102</b> 是最便宜的（约 $202，但 4C/4T 无 HT 无睿频，性能垫底，仅适合纯亮机/办公）。
+    <br>• <b>纯游戏？</b> 同代 Core i9-7900X + X299 可超频、更自由；W-2100 锁定倍频、偏工作站特性，主流玩家直接上消费级酷睿 X / 九代酷睿。
+    <br>• <b>想要 AVX-512 又不想上服务器？</b> W-2100 是入门级里少数带 AVX-512 的型号（你那台 E5-4627 v2 缺 AVX2，升级到 W-2100 可一步补齐 AVX2 + AVX-512）。
+  </div>
+</section>
+
+<footer>
+  数据来源：Intel ARK 产品规格库（Xeon W 处理器家族页，共 90 款含 W-2100 全系）+ Wikipedia《List of Intel Xeon processors (Skylake-based)》W-2100 表 + CPU-World / CPU-Upgrade 交叉确认。<br>
+  本页为静态离线资料，规格以 Intel 官方 ARK 为准。Xeon W-2100 须配 X299（C422）主板（LGA 2066），与 E-2100/E-2200（LGA 1151 v2 + C242/C246）不通用于同一主板；全系无核显需独显。参数可能随版本变动，装机前请再次核对。
+</footer>
+
+</div>
+</body>
+</html>

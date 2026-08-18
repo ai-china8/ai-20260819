@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel 至强 W-1200 系列 CPU 参数大全</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --warn:#b8860b; --noig:#d9534f; --yes:#2e9e5b; --low:#3a7bd5;
+    --iris:#6f42c1; --chip:#eef3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:24px}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .tagrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  h2 .bar{width:6px;height:20px;border-radius:3px;background:var(--brand)}
+  .lead{color:var(--sub);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat b{display:block;font-size:17px;color:var(--brand)}
+  .stat span{font-size:12px;color:var(--sub)}
+  .tablescroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:0}
+  th,td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--line)}
+  thead th{background:#f0f4f9;color:var(--ink);font-weight:600;position:sticky;top:0}
+  tbody tr:hover{background:#f6faff}
+  td.name{font-weight:700;color:var(--brand);text-align:left;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .p-yes{background:#e7f6ee;color:var(--yes)}
+  .p-no{background:#fdeaea;color:var(--noig)}
+  .p-low{background:#e7eefb;color:var(--low)}
+  .p-ig{background:#fff3d6;color:var(--warn)}
+  .p-iris{background:#efe9fb;color:var(--iris)}
+  .p-na{background:#eef0f3;color:#777}
+  .note{font-size:12px;color:var(--sub);text-align:left}
+  .chart{margin-top:8px}
+  .row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.5px}
+  .row .lbl{width:118px;text-align:right;font-weight:600;color:var(--brand);white-space:nowrap}
+  .track{flex:1;background:#eef1f5;border-radius:6px;height:18px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3a7bd5,#0a66c2)}
+  .row .val{width:64px;color:var(--sub)}
+  .legend{font-size:12px;color:var(--sub);margin-top:10px}
+  .legend code{background:var(--chip);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+  ul.tips{margin:8px 0 0;padding-left:20px}
+  ul.tips li{margin:6px 0;font-size:13.5px}
+  .callout{border-left:4px solid var(--brand2);background:#eefaf6;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .callout b{color:var(--brand2)}
+  .delta{border-left:4px solid var(--brand);background:#eef4fb;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .delta b{color:var(--brand)}
+  .warnbox{border-left:4px solid var(--warn);background:#fffaf0;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .warnbox b{color:var(--warn)}
+  footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
+  a{color:var(--brand)}
+  @media(max-width:760px){.row .lbl{width:80px}.row .val{width:52px}th,td{padding:6px 5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Intel 至强 W-1200 系列 CPU 参数大全</h1>
+  <p>Comet Lake 架构 · LGA 1200 接口 · 14nm 制程 · 2020 发布 · <b>Xeon W 主流单路工作站线（带核显 + ECC，无服务器芯片组封锁）</b></p>
+  <div class="tagrow">
+    <span class="tag">代号 Comet Lake</span>
+    <span class="tag">接口 LGA 1200</span>
+    <span class="tag">W480 芯片组</span>
+    <span class="tag">双通道 DDR4-2666</span>
+    <span class="tag">仅 AVX2（无 AVX-512）</span>
+    <span class="tag">最高 10 核 20 线程</span>
+    <span class="tag">13 款桌面/嵌入式</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="bar"></span>一、系列概览</h2>
+  <p class="lead">Xeon W-1200 是 2020 年 5 月推出的<b>主流单路工作站</b>处理器，基于 <b>Comet Lake（第 10 代桌面核显同代）</b> 内核，采用 LGA 1200 接口、搭配 W480 芯片组。它与前面做过的 <b>W-2100（HEDT / LGA 2066）</b> 和 <b>E-2200（入门工作站 / LGA 1151 v2）</b> 是<b>三条不同定位的产品线</b>：W-1200 主打"带核显 + ECC + 无封锁的便宜工作站板"，但只有双通道、最高 10 核、<b>仅 AVX2</b>。</p>
+  <div class="grid">
+    <div class="stat"><b>Comet Lake</b><span>微架构（与 i9-10900K 同代）</span></div>
+    <div class="stat"><b>14 nm</b><span>制程（Comet Lake-S 同节点）</span></div>
+    <div class="stat"><b>LGA 1200</b><span>接口（与第 10 代 Core 同）</span></div>
+    <div class="stat"><b>双通道 DDR4</b><span>DDR4-2666，最大 128GB</span></div>
+    <div class="stat"><b>80 / 125 W</b><span>TDP（桌面 W，35W 低功耗款）</span></div>
+    <div class="stat"><b>仅 AVX2</b><span>无 AVX-512（与 W-2100 不同）</span></div>
+  </div>
+  <div class="warnbox"><b>⚠ 与 W-2100 / E-2200 不是同一平台、不通用的：</b> W-1200 用 <b>LGA 1200 + W480</b> 芯片组（与消费级第 10 代 Core 主板同接口、无"服务器芯片组封锁"），而 W-2100 用 LGA 2066 + X299、E-2200 用 LGA 1151 v2 + C242/C246。<b>三者接口、主板、内存通道全不同，不能混用</b>。好处是 W-1200 <b>带核显（UHD P630）+ 支持 ECC</b>，且能上相对便宜的 W480 工作站板；代价是<b>只有双通道、最高 10 核、不支持 AVX-512</b>。</div>
+  <div class="callout"><b>后缀速记：</b>W-1200 全系<b>带核显</b>，按功耗/定位分后缀——无后缀 = 标准 80W（W-1290/1270/1250）；<b>P</b> = 高性能 125W（W-1290P/1270P/1250P）；<b>E</b> = 嵌入式（多数为 HD 630 核显，W-1290E/1270E/1250E）；<b>TE / T</b> = 低功耗 35W（W-1290TE/1270TE/1250TE、W-1290T）。<b>全系支持超线程</b>（6C/12T、8C/16T、10C/20T）——注意它和 W-2100 不同，没有"无 HT"的入门款。移动变体 W-10xxM 用 BGA 焊接（见第四节）。</div>
+  <div class="delta"><b>相对 W-2100（HEDT）/ E-2200 的关键不同：</b>① 接口 LGA 2066 → <b>LGA 1200</b>，主板从 X299 → <b>W480</b>（无 E3 封锁，可上消费级板）；② 内存 四通道 → <b>双通道 DDR4-2666</b>，最大 512GB → <b>128GB</b>；③ 指令集 <b>AVX-512 → 仅 AVX2</b>（这是 W-1200 最大的"降级"，跑依赖 AVX-512 的科学计算/加密/AI 推理明显不如 W-2100 与 W-1300）；④ 核显 无 → <b>UHD P630（标准/P/T 版）或 HD 630（E/TE 嵌入式版）</b>；⑤ 核心数上限 18C → <b>10C</b>（W-1290）；⑥ PCIe 3.0 通道 16（W480 平台共 40），无 AVX-512；⑦ TDP 120–140W → <b>35/80/125W</b>，更省电。相对 E-2200：W-1200 多了核显、平台无封锁、板子更便宜，但 E-2200 核心数更高（8C）且同为 14nm，二者定位接近但平台不通。</div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>二、W-1200 全型号参数表（13 款桌面 / 嵌入式 · 完整家族）</h2>
+  <p class="lead">数据来源：Intel ARK 官方 "Products formerly Comet Lake" 家族页 + Wikipedia《List of Intel Xeon processors (Comet Lake-based)》W-12xx 表 + TechPowerUp 发布稿交叉确认。HT=超线程。"核显"列标注 UHD P630（标准/P/T 版）或 HD Graphics 630（E/TE 嵌入式版）。以下 13 款均为 <b>LGA 1200 可插拔</b>。</p>
+  <div class="tablescroll">
+  <table>
+    <thead>
+      <tr>
+        <th>型号</th><th>核心/线程</th><th>基础频率</th><th>最大睿频</th><th>L3</th>
+        <th>TDP</th><th>核显</th><th>HT</th><th>发布</th><th>定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">W-1290P</td><td>10 / 20</td><td>3.70 GHz</td><td>5.30 GHz</td><td>20 MB</td><td>125 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">★ 旗舰高频 10C（TVB 5.3）</td></tr>
+      <tr><td class="name">W-1290</td><td>10 / 20</td><td>3.20 GHz</td><td>5.20 GHz</td><td>20 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">标准 10C 旗舰（TVB 5.2）</td></tr>
+      <tr><td class="name">W-1290E</td><td>10 / 20</td><td>3.50 GHz</td><td>4.80 GHz</td><td>20 MB</td><td>95 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式 10C（HD 630）</td></tr>
+      <tr><td class="name">W-1290T</td><td>10 / 20</td><td>1.90 GHz</td><td>4.70 GHz</td><td>20 MB</td><td>35 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">低功耗 10C（35W）</td></tr>
+      <tr><td class="name">W-1290TE</td><td>10 / 20</td><td>1.80 GHz</td><td>4.50 GHz</td><td>20 MB</td><td>35 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式低功耗 10C</td></tr>
+      <tr><td class="name">W-1270P</td><td>8 / 16</td><td>3.80 GHz</td><td>5.10 GHz</td><td>16 MB</td><td>125 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">高性能 8C（P）</td></tr>
+      <tr><td class="name">W-1270</td><td>8 / 16</td><td>3.40 GHz</td><td>5.00 GHz</td><td>16 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">标准 8C</td></tr>
+      <tr><td class="name">W-1270E</td><td>8 / 16</td><td>3.40 GHz</td><td>4.80 GHz</td><td>16 MB</td><td>80 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式 8C（HD 630）</td></tr>
+      <tr><td class="name">W-1270TE</td><td>8 / 16</td><td>2.00 GHz</td><td>4.40 GHz</td><td>16 MB</td><td>35 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式低功耗 8C</td></tr>
+      <tr><td class="name">W-1250P</td><td>6 / 12</td><td>4.10 GHz</td><td>4.80 GHz</td><td>12 MB</td><td>125 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">高频 6C（P）</td></tr>
+      <tr><td class="name">W-1250</td><td>6 / 12</td><td>3.30 GHz</td><td>4.70 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">标准 6C（性价比）</td></tr>
+      <tr><td class="name">W-1250E</td><td>6 / 12</td><td>3.50 GHz</td><td>4.70 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式 6C（HD 630）</td></tr>
+      <tr><td class="name">W-1250TE</td><td>6 / 12</td><td>2.40 GHz</td><td>3.80 GHz</td><td>12 MB</td><td>35 W</td><td><span class="pill p-ig">HD 630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'20</td><td class="note">嵌入式低功耗 6C</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：全 13 款均为 <code>LGA 1200</code> 可插拔，搭配 <code>W480 / W470 / Q470</code> 芯片组主板（无 E3 封锁，可上消费级板），<b>全系带核显 + 支持 ECC</b>。<b>标 P</b> 为 125W 高性能版（睿频更高）；<b>标 E/TE</b> 为嵌入式，核显为 <code>HD Graphics 630</code>（非 P630）；<b>标 T/TE</b> 为 35W 低功耗。W-1290 / W-1290P 的 5.2 / 5.3GHz 为含 <b>Thermal Velocity Boost（TVB）</b> 的峰值。<b>全系仅 AVX2，无 AVX-512</b>。另有 2 款移动 BGA 变体见第四节。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>三、最大睿频直观对比</h2>
+  <p class="lead">横向条形按最大睿频（含 TVB 的 1 核峰值）长度排序，<b>5.30 GHz</b>（W-1290P）为满格基准。W-1200 高频型号顶到 5.3GHz，低功耗 W-1250TE 仅 3.8GHz。</p>
+  <div class="chart">
+    <div class="row"><span class="lbl">W-1290P</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">5.3 GHz</span></div>
+    <div class="row"><span class="lbl">W-1290</span><div class="track"><div class="fill" style="width:98.1%"></div></div><span class="val">5.2 GHz</span></div>
+    <div class="row"><span class="lbl">W-1270P</span><div class="track"><div class="fill" style="width:96.2%"></div></div><span class="val">5.1 GHz</span></div>
+    <div class="row"><span class="lbl">W-1270</span><div class="track"><div class="fill" style="width:94.3%"></div></div><span class="val">5.0 GHz</span></div>
+    <div class="row"><span class="lbl">W-1250P / W-1290E</span><div class="track"><div class="fill" style="width:90.6%"></div></div><span class="val">4.8 GHz</span></div>
+    <div class="row"><span class="lbl">W-1250 / W-1290T</span><div class="track"><div class="fill" style="width:88.7%"></div></div><span class="val">4.7 GHz</span></div>
+    <div class="row"><span class="lbl">W-1270TE</span><div class="track"><div class="fill" style="width:83%"></div></div><span class="val">4.4 GHz</span></div>
+    <div class="row"><span class="lbl">W-1250TE</span><div class="track"><div class="fill" style="width:71.7%"></div></div><span class="val">3.8 GHz</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>四、移动变体 W-10xxM（BGA 焊接 · 同代 Comet Lake-H 家族）</h2>
+  <p class="lead">同期 Intel 还推出 2 款移动工作站处理器（BGA 1440 焊接，用于移动工作站整机），架构同为 Comet Lake，全系带核显、支持 ECC。下列补全完整家族。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>型号</th><th>核心/线程</th><th>基础/最大睿频</th><th>L3</th><th>TDP</th><th>核显</th><th>封装</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="name">W-10885M</td><td>8 / 16</td><td>2.40 / 5.30 GHz</td><td>16 MB</td><td>45 W</td><td><span class="pill p-ig">UHD 630</span></td><td>BGA 1440</td><td>移动旗舰（TVB 5.3）</td></tr>
+      <tr><td class="name">W-10855M</td><td>6 / 12</td><td>2.80 / 5.10 GHz</td><td>12 MB</td><td>45 W</td><td><span class="pill p-ig">UHD 630</span></td><td>BGA 1440</td><td>移动 6C（TVB 5.1）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：以上 2 款为 BGA 焊接移动版，不可自行更换。普通装机用户选上方 13 款 LGA 1200 桌面/嵌入式 SKU 即可。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>五、Xeon W 双线演进对照（主流线 vs HEDT 线）</h2>
+  <p class="lead">Xeon W 实际有<b>两条产品平行线</b>：① <b>主流单路工作站（LGA 1200）</b>——带核显、ECC、无封锁，定位接近消费级但多了工作站特性；② <b>HEDT 高端（LGA 2066）</b>——无核显、多通道、核心数爆表。W-1200 属前者，与前期做过的 W-2100 属后者。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>产品线</th><th>年份</th><th>架构</th><th>接口</th><th>芯片组</th><th>内存</th><th>核显</th><th>AVX-512</th><th>最高核/线程</th></tr></thead>
+    <tbody>
+      <tr><td class="name">W-1200（主流）</td><td>2020</td><td>Comet Lake</td><td>LGA 1200</td><td>W480</td><td>DDR4-2666 2ch</td><td>UHD P630</td><td><b>否</b></td><td><b>10C/20T</b></td></tr>
+      <tr><td class="name">W-1300（主流）</td><td>2021</td><td>Rocket Lake</td><td>LGA 1200</td><td>W580</td><td>DDR4-3200 2ch</td><td>UHD P750</td><td>是</td><td>8C/16T</td></tr>
+      <tr><td class="name">W-2100（HEDT）</td><td>2017</td><td>Skylake-W</td><td>LGA 2066</td><td>X299 (C422)</td><td>DDR4-2666 4ch</td><td>无</td><td>是</td><td>18C/36T</td></tr>
+      <tr><td class="name">W-2200（HEDT）</td><td>2019</td><td>Cascade Lake-W</td><td>LGA 2066</td><td>X299 (C422)</td><td>DDR4-2933 4ch</td><td>无</td><td>是</td><td>18C/36T</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注意：W-1200 与 W-1300 同为 LGA 1200，主板可向下兼容（W580 板多支持 W-1200，BIOS 更新后也支持 W-1300）；W-2100/2200 同为 LGA 2066 可共用 X299。<b>主流线（W-12/13xx）带核显、无 AVX-512（W-1200）/ 有 AVX-512（W-1300）；HEDT 线（W-21/22xx）无核显、全系 AVX-512</b>。与入门 E 系列（LGA 1151 v2 + C242/C246 封锁）完全不通用。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>六、平台兼容与选购建议</h2>
+  <ul class="tips">
+    <li><b>主板芯片组（关键）：</b>必须用 <b>W480 / W470 / Q470</b> 芯片组主板（如华硕 Pro WS W480-ACE、超微 X12SCA-F）。<b>接口与消费级第 10 代 Core（LGA 1200）相同，无 E3 封锁</b>——很多 W480 板也兼容 i9-10900K，但 W-1200 多了 ECC、vPro、RSTe 工作站特性。注意<b>不是</b> C242/C246（那是 E 系列），也<b>不是</b> X299（那是 W-2100）。</li>
+    <li><b>内存：</b>双通道 <b>DDR4-2666</b>，ECC UDIMM（Unbuffered），<b>最大 128GB</b>（4 条 32GB）；比 E 系列同代便宜，但容量上限低于 W-2100 的四通道 512GB。</li>
+    <li><b>核显：</b><b>全系带核显</b>——标准/P/T 版为 <b>UHD P630</b>，嵌入式 E/TE 版为 <b>HD Graphics 630</b>；支持 Quick Sync 视频转码，亮机/轻办公可不插独显。</li>
+    <li><b>指令集（重要）：</b>支持 <b>AVX2 / SSE4 / AES-NI / vPro / VT-x / VT-d</b>，PCIe 3.0，CPU 提供 <b>16 条</b>（W480 平台共 40 条）。<b>⚠ 不支持 AVX-512</b>——这点与 W-2100/W-2200 以及下一页的 W-1300 都不同。你那台 E5-4627 v2 连 AVX2 都没有，W-1200 好歹补齐了 AVX2，但跑依赖 AVX-512 的科学计算/加密/AI 推理会回退慢路径，不如 W-1300 与 W-2100。</li>
+    <li><b>功耗散热：</b>标准版 80W、P 版 125W、低功耗 35W，远低于 HEDT 的 140W，散热压力小；35W 的 T/TE 版适合静音 NAS / 软路由 / 紧凑工作站。</li>
+  </ul>
+  <div class="callout">
+    <b>怎么选（W-1200 适用场景）：</b>
+    <br>• <b>最强单路工作站 / 视频转码 / 轻渲染</b> → <b>W-1290</b>（10C/20T，5.2GHz TVB，80W）或 <b>W-1290P</b>（125W 高频版，5.3GHz TVB）。
+    <br>• <b>性价比 8 核</b> → <b>W-1270</b>（8C/16T，5.0GHz，80W），约等于 i7-10700 但带 ECC/vPro。
+    <br>• <b>高频 6 核 / 游戏 + 生产力兼顾</b> → <b>W-1250P</b>（4.1/4.8GHz，125W）或 <b>W-1250</b>（3.3/4.7，80W）。
+    <br>• <b>静音 / 低功耗 / NAS / 软路由</b> → <b>W-1290T / W-1250TE</b>（35W）。
+    <br>• <b>嵌入式 / 工业整机</b> → 选 <b>E/TE</b> 后缀（HD 630 核显，更长供货周期）。
+    <br>• <b>需要 AVX-512</b> → W-1200 做不到，请转 <b>W-1300</b>（同接口、同芯片组升级）或 HEDT 的 <b>W-2100/2200</b>。
+  </div>
+</section>
+
+<footer>
+  数据来源：Intel ARK 官方 "Products formerly Comet Lake" 家族页 · Wikipedia《List of Intel Xeon processors (Comet Lake-based)》· TechPowerUp 发布稿。关键参数（TDP / 核显 / 睿频含 TVB）以 ARK 为准。本页为 E3-1200 v1~v6、E-2100/2200、W-2100 系列大全的延续，专注于 Xeon W 主流单路工作站线。
+</footer>
+
+</div>
+</body>
+</html>

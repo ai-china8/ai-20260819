@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel 至强 E-2200 系列 CPU 参数大全</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --warn:#b8860b; --noig:#d9534f; --yes:#2e9e5b; --low:#3a7bd5;
+    --iris:#6f42c1; --chip:#eef3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:24px}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .tagrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  h2 .bar{width:6px;height:20px;border-radius:3px;background:var(--brand)}
+  .lead{color:var(--sub);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat b{display:block;font-size:17px;color:var(--brand)}
+  .stat span{font-size:12px;color:var(--sub)}
+  .tablescroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:0}
+  th,td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--line)}
+  thead th{background:#f0f4f9;color:var(--ink);font-weight:600;position:sticky;top:0}
+  tbody tr:hover{background:#f6faff}
+  td.name{font-weight:700;color:var(--brand);text-align:left;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .p-yes{background:#e7f6ee;color:var(--yes)}
+  .p-no{background:#fdeaea;color:var(--noig)}
+  .p-low{background:#e7eefb;color:var(--low)}
+  .p-ig{background:#fff3d6;color:var(--warn)}
+  .p-iris{background:#efe9fb;color:var(--iris)}
+  .p-na{background:#eef0f3;color:#777}
+  .note{font-size:12px;color:var(--sub);text-align:left}
+  .chart{margin-top:8px}
+  .row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.5px}
+  .row .lbl{width:118px;text-align:right;font-weight:600;color:var(--brand);white-space:nowrap}
+  .track{flex:1;background:#eef1f5;border-radius:6px;height:18px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3a7bd5,#0a66c2)}
+  .row .val{width:64px;color:var(--sub)}
+  .legend{font-size:12px;color:var(--sub);margin-top:10px}
+  .legend code{background:var(--chip);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+  ul.tips{margin:8px 0 0;padding-left:20px}
+  ul.tips li{margin:6px 0;font-size:13.5px}
+  .callout{border-left:4px solid var(--brand2);background:#eefaf6;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .callout b{color:var(--brand2)}
+  .delta{border-left:4px solid var(--brand);background:#eef4fb;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .delta b{color:var(--brand)}
+  .warnbox{border-left:4px solid var(--warn);background:#fffaf0;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .warnbox b{color:var(--warn)}
+  footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
+  a{color:var(--brand)}
+  @media(max-width:760px){.row .lbl{width:80px}.row .val{width:52px}th,td{padding:6px 5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Intel 至强 E-2200 系列 CPU 参数大全</h1>
+  <p>Coffee Lake Refresh 架构 · LGA 1151 v2 接口 · 14nm++ 制程 · 2019 发布 · <b>Xeon E 家族首款 8 核（E-2288G / E-2278G）</b></p>
+  <div class="tagrow">
+    <span class="tag">代号 Coffee Lake-R</span>
+    <span class="tag">接口 LGA 1151 v2</span>
+    <span class="tag">14 nm++ 制程</span>
+    <span class="tag">DDR4-2666</span>
+    <span class="tag">最高 8 核 16 线程</span>
+    <span class="tag">单核 5.0 GHz</span>
+    <span class="tag">12 款桌面 SKU</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="bar"></span>一、系列概览</h2>
+  <p class="lead">Xeon E-2200 是 2019 年推出的入门工作站/单路服务器处理器，基于与九代酷睿（Core i 9000 系）同源的 <b>Coffee Lake Refresh（CFL-R）</b> 内核。它是 E-2100 的接任者，最大亮点在于 <b>核心数首次冲到 8 核 16 线程</b>（E-2288G / E-2278G），且单核睿频摸到 <b>5.0 GHz</b>，同时沿用并强化了服务器芯片组封锁策略。</p>
+  <div class="grid">
+    <div class="stat"><b>Coffee Lake-R</b><span>微架构（与 i9-9900K 同源）</span></div>
+    <div class="stat"><b>14 nm++</b><span>制程（CFL 优化版）</span></div>
+    <div class="stat"><b>LGA 1151 v2</b><span>接口（与 E-2100 同）</span></div>
+    <div class="stat"><b>DDR4-2666</b><span>双通道 ECC，最大 128GB</span></div>
+    <div class="stat"><b>71 ~ 95 W</b><span>TDP 跨度（桌面）</span></div>
+    <div class="stat"><b>AVX2</b><span>支持 AVX2 / FMA3 / TSX</span></div>
+  </div>
+  <div class="warnbox"><b>⚠ 关于 "E-2204G"：该型号在 Intel 官方 E-2200 家族中并不存在。</b> E-2200 桌面家族从 <b>E-2224</b> 起步，带核显的入门款是 <b>E-2224G</b>（4C/4T、3.5/4.7GHz、71W、UHD P630），而非 "E-2204G"。坊间常把低编号记错。本页以 Intel ARK 官方 12 款桌面 SKU 为准，下方完整列出。注意：若你看到 "E-2204G" 字样，多半是 E-2224G 的笔误或混淆。</div>
+  <div class="callout"><b>后缀速记：</b>带 <b>G</b> = 集成 <b>Intel UHD Graphics P630</b>（Gen 9.5 GT2，24EU，350MHz 起、最高 1.2GHz，支持 4K@60Hz、Quick Sync 转码）；不带 G 的 <b>E-2224 / E-2234 / E-2236</b> 为<b>无核显</b>，需配独显。注意：<b>E-2224 / E-2224G / E-2226G</b> 不支持超线程（4C/4T 或 6C/6T），其余 <b>4C/8T 或 6C/12T 或 8C/16T</b>。数字越大频率越高：22x4=入门 4 核、22x6=6 核、22x8=8 核旗舰。</div>
+  <div class="delta"><b>相对 E-2100 的主要变化：</b>① 命名延续 Xeon E-21xx → <b>E-22xx</b>，架构 Coffee Lake → <b>Coffee Lake Refresh（CFL-R）</b>，同 14nm 节点；② <b>核心数大突破</b>：E-2100 最高 6C/12T → E-2200 最高 <b>8C/16T</b>（E-2288G / E-2278G）；③ 最高睿频 4.7 → <b>5.0 GHz</b>（E-2288G/E-2278G 单核 5.0）；④ <b>接口/芯片组不变</b>：仍 LGA 1151 v2 + C242/C246，多数 C246 主板靠 BIOS 更新可兼容 E-2100 与 E-2200 两代；⑤ 同 DDR4-2666、同 UHD P630、同 PCIe 3.0；⑥ 仍 <b>无 AVX-512</b>（与服务器级 Skylake-SP/Cascade Lake 的区别）。</div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>二、E-2200 全型号参数表（12 款桌面 LGA1151 SKU · 完整家族）</h2>
+  <p class="lead">数据来源：Intel ARK 官方 Xeon E 处理器家族页（51 款，含 E-2200 全系）+ Intel《Xeon E-2100 and E-2200 Processor Family Datasheet / Specification Update》（核显 GT2、TDP、逐核睿频表交叉确认）+ Intel E-2200 产品简介 PDF。HT=超线程。以下 12 款均为 <b>LGA 1151 v2 可插拔</b>。</p>
+  <div class="tablescroll">
+  <table>
+    <thead>
+      <tr>
+        <th>型号</th><th>核心/线程</th><th>基础频率</th><th>最大睿频</th><th>L3</th>
+        <th>TDP</th><th>核显</th><th>HT</th><th>发布</th><th>定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">E-2288G</td><td>8 / 16</td><td>3.70 GHz</td><td>5.00 GHz</td><td>16 MB</td><td>95 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">★ 旗舰 8C/16T</td></tr>
+      <tr><td class="name">E-2278G</td><td>8 / 16</td><td>3.40 GHz</td><td>5.00 GHz</td><td>16 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">8C/16T 80W</td></tr>
+      <tr><td class="name">E-2286G</td><td>6 / 12</td><td>4.00 GHz</td><td>4.90 GHz</td><td>12 MB</td><td>95 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">高频 6C/12T</td></tr>
+      <tr><td class="name">E-2276G</td><td>6 / 12</td><td>3.80 GHz</td><td>4.90 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">6C/12T 带核显</td></tr>
+      <tr><td class="name">E-2274G</td><td>4 / 8</td><td>4.00 GHz</td><td>4.90 GHz</td><td>8 MB</td><td>83 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">高频 4C/8T</td></tr>
+      <tr><td class="name">E-2246G</td><td>6 / 12</td><td>3.60 GHz</td><td>4.80 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">6C/12T 带核显</td></tr>
+      <tr><td class="name">E-2244G</td><td>4 / 8</td><td>3.80 GHz</td><td>4.80 GHz</td><td>8 MB</td><td>71 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">4C/8T 带核显</td></tr>
+      <tr><td class="name">E-2236</td><td>6 / 12</td><td>3.40 GHz</td><td>4.80 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">6C/12T 无核显</td></tr>
+      <tr><td class="name">E-2234</td><td>4 / 8</td><td>3.60 GHz</td><td>4.80 GHz</td><td>8 MB</td><td>71 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q2'19</td><td class="note">4C/8T 无核显</td></tr>
+      <tr><td class="name">E-2226G</td><td>6 / 6</td><td>3.40 GHz</td><td>4.70 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-no">否</span></td><td>Q2'19</td><td class="note">6C/6T 无 HT</td></tr>
+      <tr><td class="name">E-2224G</td><td>4 / 4</td><td>3.50 GHz</td><td>4.70 GHz</td><td>8 MB</td><td>71 W</td><td><span class="pill p-ig">UHD P630</span></td><td><span class="pill p-no">否</span></td><td>Q2'19</td><td class="note">★ 带核显入门(即误称的"E-2204G")</td></tr>
+      <tr><td class="name">E-2224</td><td>4 / 4</td><td>3.40 GHz</td><td>4.60 GHz</td><td>8 MB</td><td>71 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-no">否</span></td><td>Q2'19</td><td class="note">入门 无核显</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：全 12 款均为 <code>LGA 1151 v2</code> 可插拔，必须搭配 <code>C242/C246</code> 服务器主板。带 <code>G</code> 的型号集成 UHD P630，不带 G 的 E-2224/E-2234/E-2236 无核显。<b>E-2224 / E-2224G / E-2226G 三款无超线程</b>（4C/4T 或 6C/6T），其余为 4C/8T、6C/12T 或 8C/16T。另有 9 款嵌入式/移动变体（BGA 焊接，见下方说明），不列入上表。★ 你提到的 "E-2204G" 即对应本表的 <b>E-2224G</b>——官方无 E-2204G 这一编号。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>三、最大睿频直观对比</h2>
+  <p class="lead">横向条形按最大睿频（1 核 Turbo）长度排序，<b>5.00 GHz</b>（E-2288G / E-2278G）为满格基准。E-2200 全系高频：两款 8 核旗舰顶到 5.0GHz，三款到 4.9GHz，入门 E-2224 也达 4.6GHz。</p>
+  <div class="chart">
+    <div class="row"><span class="lbl">E-2288G / E-2278G</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">5.0 GHz</span></div>
+    <div class="row"><span class="lbl">E-2286G / E-2276G / E-2274G</span><div class="track"><div class="fill" style="width:98%"></div></div><span class="val">4.9 GHz</span></div>
+    <div class="row"><span class="lbl">E-2246G / E-2244G / E-2236 / E-2234</span><div class="track"><div class="fill" style="width:96%"></div></div><span class="val">4.8 GHz</span></div>
+    <div class="row"><span class="lbl">E-2226G / E-2224G</span><div class="track"><div class="fill" style="width:94%"></div></div><span class="val">4.7 GHz</span></div>
+    <div class="row"><span class="lbl">E-2224</span><div class="track"><div class="fill" style="width:92%"></div></div><span class="val">4.6 GHz</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>四、嵌入式 / 移动型号（BGA 焊接 · 同代 E-2200 家族）</h2>
+  <p class="lead">除 12 款桌面可插拔 SKU 外，Intel 同期还推出了 9 款嵌入式 / 移动工作站型号（2019 Q2 发布），均为 <b>BGA 焊接、不可自行更换</b>，面向工控、边缘、瘦客户机、移动工作站。下列补充完整家族，不与桌面表重复。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>型号</th><th>核心/线程</th><th>基础/最大睿频</th><th>L3</th><th>TDP</th><th>核显</th><th>封装</th></tr></thead>
+    <tbody>
+      <tr><td class="name">E-2286M</td><td>8 / 16</td><td>2.40 / 5.00 GHz</td><td>16 MB</td><td>45 W</td><td><span class="pill p-ig">UHD P630</span></td><td>BGA 1440</td></tr>
+      <tr><td class="name">E-2278GE</td><td>8 / 16</td><td>3.30 / 4.70 GHz</td><td>16 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2278GEL</td><td>8 / 16</td><td>2.00 / 3.90 GHz</td><td>16 MB</td><td>35 W</td><td><span class="pill p-na">无</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2276M</td><td>6 / 12</td><td>2.80 / 4.70 GHz</td><td>12 MB</td><td>45 W</td><td><span class="pill p-ig">UHD P630</span></td><td>BGA 1440</td></tr>
+      <tr><td class="name">E-2276ME</td><td>6 / 12</td><td>2.80 / 4.50 GHz</td><td>12 MB</td><td>45 W</td><td><span class="pill p-na">无</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2276ML</td><td>6 / 12</td><td>2.00 / 4.20 GHz</td><td>12 MB</td><td>25 W</td><td><span class="pill p-na">无</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2254ME</td><td>4 / 8</td><td>2.60 / 3.80 GHz</td><td>8 MB</td><td>45 W</td><td><span class="pill p-na">无</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2254ML</td><td>4 / 8</td><td>1.70 / 3.50 GHz</td><td>8 MB</td><td>25 W</td><td><span class="pill p-na">无</span></td><td>BGA 类型</td></tr>
+      <tr><td class="name">E-2226GE</td><td>6 / 12</td><td>3.40 / 4.60 GHz</td><td>12 MB</td><td>80 W</td><td><span class="pill p-ig">UHD P630</span></td><td>BGA 类型</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：以上 9 款为嵌入式/移动变体（BGA 焊接），<b>不可像桌面版那样插拔升级</b>。其中 E-2286M / E-2276M 为移动工作站 BGA 1440；带核显的 E-2286M/E-2278GE/E-2276M/E-2226GE 集成 UHD P630，其余无核显。M=移动、ME/ML=嵌入式（功耗更低，25/35/45W）。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>五、入门至强演进（E3 v6 → Xeon E 家族）</h2>
+  <p class="lead">E3-1200 退役后，Intel 把入门工作站/单路服务器统一为 <b>Xeon E</b> 品牌，按年份迭代。下表给出完整接替链。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>代次</th><th>架构</th><th>接口</th><th>芯片组</th><th>内存</th><th>最高核/线程</th><th>年份</th><th>SKU 数</th></tr></thead>
+    <tbody>
+      <tr><td class="name">E3-1200 v6</td><td>Kaby Lake</td><td>LGA 1151</td><td>C232/C236</td><td>DDR4-2400</td><td>4C/8T</td><td>2017</td><td>9</td></tr>
+      <tr><td class="name">Xeon E-2100</td><td>Coffee Lake</td><td>LGA 1151 v2</td><td>C242/C246</td><td>DDR4-2666</td><td>6C/12T</td><td>2018</td><td>11</td></tr>
+      <tr><td class="name">Xeon E-2200</td><td>Coffee Lake-R</td><td>LGA 1151 v2</td><td>C242/C246</td><td>DDR4-2666</td><td><b>8C/16T</b></td><td>2019</td><td><b>12</b></td></tr>
+      <tr><td class="name">Xeon E-2300</td><td>Rocket Lake</td><td>LGA 1200</td><td>C256/C252</td><td>DDR4-3200</td><td>8C/16T</td><td>2021</td><td>10</td></tr>
+      <tr><td class="name">Xeon E-2400</td><td>Raptor Lake</td><td>LGA 1700</td><td>C266/C262</td><td>DDR5/DDR4</td><td>8C/16T</td><td>2023</td><td>8</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注意：E-2100 与 E-2200 同为 LGA 1151 v2 + C242/C246，多数 C246 主板靠 BIOS 更新可兼容两代；但都<b>不能</b>上消费级 Z370/Z390。E-2300 起换 LGA 1200（Rocket Lake），E-2400 起换 LGA 1700（Raptor Lake）。你手上的 E5-4627 v2 缺 AVX2，而 E-2200 全系支持 AVX2（但同样没有 AVX-512）。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>六、平台兼容与选购建议</h2>
+  <ul class="tips">
+    <li><b>主板芯片组（关键）：</b>必须用服务器芯片组 <b>C242</b>（无显示输出、纯算力、最大 64GB）或 <b>C246</b>（支持显示 + IPMI + ECC，最大 128GB）。消费级 Z370/Z390 <b>无法点亮</b> E-2200（E3 封锁延续，且 LGA 1151 v2 电性不同）。多数 C246 主板 BIOS 更新后可同时兼容 E-2100 与 E-2200。</li>
+    <li><b>内存：</b>支持 <b>DDR4-2666</b> ECC/non-ECC 双通道，C242 最大 64GB，C246 最大 <b>128GB</b>（需主板硬件支持）。</li>
+    <li><b>核显：</b>尾号 <code>G</code> 的带 <b>UHD P630</b>（Gen 9.5 GT2，24EU，最高 1.2GHz，支持 4K@60Hz、Quick Sync 转码）；E-2224/E-2234/E-2236 无核显需配独显。</li>
+    <li><b>指令集：</b>支持 <b>AVX2 / FMA3 / AES-NI / TSX-NI / SGX / vPro / VT-x / VT-d</b>；PCIe 3.0（16 条 CPU + 芯片组最多 40 条）。<b>无 AVX-512</b>（介意的话需上更高端至强可扩展家族）。</li>
+    <li><b>封装：</b>12 款桌面版均为 LGA 1151 v2 可插拔；9 款嵌入式/移动版为 BGA 焊接（见第四节），不可自行更换。</li>
+  </ul>
+  <div class="callout">
+    <b>怎么选（E-2200 适用场景）：</b>
+    <br>• <b>最强单路小工作站</b> → <b>E-2288G</b>（8C/16T，单核 5.0GHz，带 UHD P630，95W）或 <b>E-2278G</b>（同 8C/16T 但 80W 更凉快）。
+    <br>• <b>高频 6 核</b> → <b>E-2286G</b>（4.0/4.9，95W）或 <b>E-2276G</b>（3.8/4.9，80W）。
+    <br>• <b>多核渲染/编译/虚拟机</b> → <b>E-2236</b>（6C/12T 无核显，配独显）或 <b>E-2246G</b>（同规格带核显转码）。
+    <br>• <b>高频 4 核（游戏/单线程）</b> → <b>E-2274G</b>（4.0/4.9，带核显）或 <b>E-2234</b>（3.6/4.8，无核显配独显）。
+    <br>• <b>预算/亮机/软路由/转码机</b> → <b>E-2224G</b>（4C/4T，带 UHD P630，71W，就是常被误写成 "E-2204G" 那颗）或 <b>E-2224</b>（无核显入门）。
+    <br>• <b>纯游戏 U？</b> 同代 Core i9-9900K + Z390 可超频、更自由；E-2200 仍被锁在服务器板——主流玩家直接上消费级酷睿。
+  </div>
+</section>
+
+<footer>
+  数据来源：Intel ARK 产品规格库（Xeon E 处理器家族页，共 51 款含 E-2200 全系）+ Intel《Xeon E-2100 and E-2200 Processor Family Datasheet / Specification Update》（核显 GT2、TDP、逐核睿频表交叉确认）+ Intel E-2200 产品简介 PDF + Tom's Hardware / StorageReview 发布报道。<br>
+  本页为静态离线资料，规格以 Intel 官方 ARK 为准。Xeon E-2200 须配 C242/C246 服务器主板（LGA 1151 v2，与 E3 v5/v6 不兼容）；参数可能随版本变动，装机前请再次核对。★ 说明：用户提及的 "E-2204G" 在 Intel 官方家族中不存在，本页已按官方 12 款桌面 SKU 为准，其对应入门带核显型号为 E-2224G。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel 至强 E3-1200 v6 系列 CPU 参数大全</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --warn:#b8860b; --noig:#d9534f; --yes:#2e9e5b; --low:#3a7bd5;
+    --iris:#6f42c1; --chip:#eef3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:24px}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .tagrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  h2{font-size:19px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  h2 .bar{width:6px;height:20px;border-radius:3px;background:var(--brand)}
+  .lead{color:var(--sub);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat b{display:block;font-size:17px;color:var(--brand)}
+  .stat span{font-size:12px;color:var(--sub)}
+  .tablescroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:0}
+  th,td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--line)}
+  thead th{background:#f0f4f9;color:var(--ink);font-weight:600;position:sticky;top:0}
+  tbody tr:hover{background:#f6faff}
+  td.name{font-weight:700;color:var(--brand);text-align:left;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .p-yes{background:#e7f6ee;color:var(--yes)}
+  .p-no{background:#fdeaea;color:var(--noig)}
+  .p-low{background:#e7eefb;color:var(--low)}
+  .p-ig{background:#fff3d6;color:var(--warn)}
+  .p-iris{background:#efe9fb;color:var(--iris)}
+  .p-na{background:#eef0f3;color:#777}
+  .note{font-size:12px;color:var(--sub);text-align:left}
+  .chart{margin-top:8px}
+  .row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.5px}
+  .row .lbl{width:118px;text-align:right;font-weight:600;color:var(--brand);white-space:nowrap}
+  .track{flex:1;background:#eef1f5;border-radius:6px;height:18px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3a7bd5,#0a66c2)}
+  .row .val{width:64px;color:var(--sub)}
+  .legend{font-size:12px;color:var(--sub);margin-top:10px}
+  .legend code{background:var(--chip);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+  ul.tips{margin:8px 0 0;padding-left:20px}
+  ul.tips li{margin:6px 0;font-size:13.5px}
+  .callout{border-left:4px solid var(--brand2);background:#eefaf6;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .callout b{color:var(--brand2)}
+  .delta{border-left:4px solid var(--brand);background:#eef4fb;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .delta b{color:var(--brand)}
+  .warnbox{border-left:4px solid var(--warn);background:#fffaf0;padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:14px}
+  .warnbox b{color:var(--warn)}
+  footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
+  a{color:var(--brand)}
+  @media(max-width:760px){.row .lbl{width:80px}.row .val{width:52px}th,td{padding:6px 5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Intel 至强 E3-1200 v6 系列 CPU 参数大全</h1>
+  <p>Kaby Lake 架构 · LGA 1151 接口 · 14nm+ 制程 · 2017 发布 · <b>E3-1200 编号的收官一代</b></p>
+  <div class="tagrow">
+    <span class="tag">代号 Kaby Lake</span>
+    <span class="tag">接口 LGA 1151</span>
+    <span class="tag">14 nm+ 制程</span>
+    <span class="tag">DDR4-2400</span>
+    <span class="tag">支持 AVX2</span>
+    <span class="tag">9 款桌面 SKU</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="bar"></span>一、系列概览</h2>
+  <p class="lead">E3-1200 v6 是 2017 年推出的第六代（也是 <b>E3-1200 这个编号的最后一款</b>）入门至强，基于与七代酷睿（Core i 7000 系）同源的 Kaby Lake 内核，沿用 LGA 1151 接口。它是 v5 的提频迭代——频率更高、内存升到 DDR4-2400、核显升到 HD P630，但<b>"E3 封锁"依旧存在</b>，仍必须用服务器芯片组。</p>
+  <div class="grid">
+    <div class="stat"><b>Kaby Lake</b><span>微架构（与 i7-7700 同源）</span></div>
+    <div class="stat"><b>14 nm+</b><span>改进版 14nm 制程</span></div>
+    <div class="stat"><b>LGA 1151</b><span>接口（需 C232/C236）</span></div>
+    <div class="stat"><b>DDR4-2400</b><span>双通道，最大 64GB</span></div>
+    <div class="stat"><b>72 ~ 79 W</b><span>TDP 跨度（略低于 v5）</span></div>
+    <div class="stat"><b>AVX2</b><span>支持 AVX2 / FMA3 / TSX</span></div>
+  </div>
+  <div class="warnbox"><b>⚠ "E3 封锁"延续到 v6：</b> 与 v5 一样，E3-1200 v6 <b>不能上任何消费级 100/200 系主板</b>（Z170/B250/Z270 等都点不亮），必须搭配服务器芯片组 <b>C232 / C236</b>（Kaby Lake  Xeon 在 C232/C236 上靠 BIOS 更新支持）。也就是说从 v5 起的"性价比神话终结"在 v6 依旧成立——想用 E3 就得买服务器板。</div>
+  <div class="callout"><b>后缀速记：</b>带 <b>5</b>（1225/1245/1275）为 <b>HD P630</b>（工作站核显，Gen 9 GT2，无 eDRAM）；<b>1285 v6 是特例</b>，用 <b>Iris Plus 650（带 64MB eDRAM，GT3e）</b>，是 v6 唯一带 eDRAM 的型号、也是全系核显最强；带 <b>0</b>（1220/1230/1240/1270/1280）为 <b>无核显</b>，需配独显。注意：<b>1220 / 1225 v6 不支持超线程（4C/4T）</b>，其余 4C/8T。<b>v6 没有桌面低功耗 L 版</b>（1260L/1240L 等属于上代 v5）。</div>
+  <div class="delta"><b>相对 v5 的主要变化：</b>① 架构 Skylake→Kaby Lake（14nm→14nm+ 优化版）；② 内存 DDR4-2133 → <b>DDR4-2400</b>；③ 核显 HD P530 → <b>HD P630</b>，并新增旗舰 <b>E3-1285 v6（Iris Plus 650 + eDRAM）</b>；④ 频率整体上浮 100~200MHz，新增 <b>E3-1285 v6（4.1/4.5 GHz）</b> 成为 E3-1200 家族史上最高睿频（4.5GHz）；⑤ TDP 由 80W 降到 <b>72/73W</b>（1285 v6 因 Iris Plus 为 79W）；⑥ 接口仍为 LGA 1151、仍须 C232/C236，封锁延续；⑦ L3 仍为 8MB。</div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>二、v6 全型号参数表（9 款桌面 SKU · 完整 E3-1200 v6 家族）</h2>
+  <p class="lead">数据来源：Intel ARK 官方 E3 v6 家族页（14 款，含 5 款 E3-15xx v6 移动/嵌入式，见文末）。HT=超线程。<b>以下 9 款均为 LGA 1151 可插拔</b>。</p>
+  <div class="tablescroll">
+  <table>
+    <thead>
+      <tr>
+        <th>型号</th><th>核心/线程</th><th>基础频率</th><th>最大睿频</th><th>L3</th>
+        <th>TDP</th><th>核显</th><th>HT</th><th>发布</th><th>定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">E3-1285 v6</td><td>4 / 8</td><td>4.10 GHz</td><td>4.50 GHz</td><td>8 MB</td><td>79 W</td><td><span class="pill p-iris">Iris Plus 650</span></td><td><span class="pill p-yes">是</span></td><td>Q3'17</td><td class="note">★ 旗舰 带 eDRAM</td></tr>
+      <tr><td class="name">E3-1280 v6</td><td>4 / 8</td><td>3.90 GHz</td><td>4.20 GHz</td><td>8 MB</td><td>72 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">高频 无核显</td></tr>
+      <tr><td class="name">E3-1275 v6</td><td>4 / 8</td><td>3.80 GHz</td><td>4.20 GHz</td><td>8 MB</td><td>73 W</td><td><span class="pill p-ig">P630</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">高频 带核显</td></tr>
+      <tr><td class="name">E3-1270 v6</td><td>4 / 8</td><td>3.80 GHz</td><td>4.20 GHz</td><td>8 MB</td><td>72 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">高频 无核显</td></tr>
+      <tr><td class="name">E3-1245 v6</td><td>4 / 8</td><td>3.70 GHz</td><td>4.10 GHz</td><td>8 MB</td><td>73 W</td><td><span class="pill p-ig">P630</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">主力 带核显</td></tr>
+      <tr><td class="name">E3-1240 v6</td><td>4 / 8</td><td>3.70 GHz</td><td>4.10 GHz</td><td>8 MB</td><td>72 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">主力 无核显</td></tr>
+      <tr><td class="name">E3-1230 v6</td><td>4 / 8</td><td>3.50 GHz</td><td>3.90 GHz</td><td>8 MB</td><td>72 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-yes">是</span></td><td>Q1'17</td><td class="note">性价比 无核显</td></tr>
+      <tr><td class="name">E3-1225 v6</td><td>4 / 4</td><td>3.30 GHz</td><td>3.70 GHz</td><td>8 MB</td><td>73 W</td><td><span class="pill p-ig">P630</span></td><td><span class="pill p-no">否</span></td><td>Q1'17</td><td class="note">无 HT 带核显</td></tr>
+      <tr><td class="name">E3-1220 v6</td><td>4 / 4</td><td>3.00 GHz</td><td>3.50 GHz</td><td>8 MB</td><td>72 W</td><td><span class="pill p-na">无</span></td><td><span class="pill p-no">否</span></td><td>Q1'17</td><td class="note">入门 无 HT</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注：全 9 款均为 <code>LGA 1151</code> 可插拔，必须搭配 <code>C232/C236</code> 服务器主板。带 <code>5</code> 的型号集成 HD P630（1225/1245/1275）或 Iris Plus 650（1285，带 eDRAM）；带 <code>0</code> 为无核显。E3-1220/1225 v6 为 <b>4C/4T（无超线程）</b>。另有 <b>E3-1505L v6（25W / 2.2-3.0GHz）、E3-1505M v6（45W / 3.0-4.0GHz）、E3-1535M v6（45W / 3.1-4.2GHz）、E3-1501L v6（25W / 2.1-2.9GHz，6MB）、E3-1501M v6（45W / 2.9-3.6GHz，6MB）</b> 五款移动/嵌入式版为 BGA 焊接，未列入上表（属 E3-1500 v6 媒体/嵌入式家族）。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>三、最大睿频直观对比</h2>
+  <p class="lead">横向条形按最大睿频（Turbo）长度排序，4.50 GHz（1285 v6）为满格基准。v6 全系高频，1280/1275/1270 顶到 4.2 GHz，1285 更是冲到 4.5 GHz——<b>这是整个 E3-1200 家族的历史最高睿频</b>。</p>
+  <div class="chart">
+    <div class="row"><span class="lbl">E3-1285 v6</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">4.5 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1280/1275/1270 v6</span><div class="track"><div class="fill" style="width:93.3%"></div></div><span class="val">4.2 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1245/1240 v6</span><div class="track"><div class="fill" style="width:91.1%"></div></div><span class="val">4.1 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1230 v6</span><div class="track"><div class="fill" style="width:86.7%"></div></div><span class="val">3.9 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1225 v6</span><div class="track"><div class="fill" style="width:82.2%"></div></div><span class="val">3.7 GHz</span></div>
+    <div class="row"><span class="lbl">E3-1220 v6</span><div class="track"><div class="fill" style="width:77.8%"></div></div><span class="val">3.5 GHz</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>四、历代 E3-1200 演进（对照）</h2>
+  <p class="lead">E3 平台共 v1～v6 六代，<b>v6 是 E3-1200 编号的收官之作</b>。v6 之后 Intel 把入门工作站市场交给新命名的 <b>Xeon E-2100 / E-2200（Coffee Lake 起，LGA 1151 v2 + C242/C246）</b>。</p>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>代次</th><th>架构</th><th>制程</th><th>接口</th><th>内存</th><th>指令集</th><th>年份</th><th>SKU 数</th></tr></thead>
+    <tbody>
+      <tr><td class="name">E3-1200 v1</td><td>Sandy Bridge</td><td>32 nm</td><td>LGA 1155</td><td>DDR3-1333</td><td>AVX</td><td>2011</td><td>12</td></tr>
+      <tr><td class="name">E3-1200 v2</td><td>Ivy Bridge</td><td>22 nm</td><td>LGA 1155</td><td>DDR3-1600</td><td>AVX</td><td>2012</td><td>12</td></tr>
+      <tr><td class="name">E3-1200 v3</td><td>Haswell</td><td>22 nm</td><td>LGA 1150</td><td>DDR3-1600</td><td>AVX2</td><td>2013</td><td>25</td></tr>
+      <tr><td class="name">E3-1200 v4</td><td>Broadwell</td><td>14 nm</td><td>LGA 1150</td><td>DDR3L-1600</td><td>AVX2</td><td>2015</td><td>8</td></tr>
+      <tr><td class="name">E3-1200 v5</td><td>Skylake</td><td>14 nm</td><td>LGA 1151</td><td>DDR4-2133</td><td>AVX2</td><td>2015</td><td>11</td></tr>
+      <tr><td class="name">E3-1200 v6</td><td>Kaby Lake</td><td>14 nm+</td><td>LGA 1151</td><td>DDR4-2400</td><td>AVX2</td><td>2017</td><td><b>9</b>(+移动5)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">注意：v5 与 v6 同为 LGA 1151，<b>部分 C232/C236 服务器主板靠 BIOS 更新可同时支持 v5 与 v6</b>（同接口、同芯片组）；但两者都<b>不能</b>上消费级 100/200 系板。v6 之后编号退役，由 Coffee Lake 架构的 <b>Xeon E-2100（2018）</b> 与 <b>E-2200（2019）</b> 接任（LGA 1151 v2 + C242/C246）。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>五、平台兼容与选购建议</h2>
+  <ul class="tips">
+    <li><b>主板芯片组（关键）：</b>必须用服务器芯片组 <b>C232</b> 或 <b>C236</b>（如华硕 P10S 系列、超微 X11SAE/X11SSH），靠 BIOS 更新可兼容 v5/v6 两代。消费级 Z170/B250/Z270 <b>无法点亮</b> E3 v6（E3 封锁延续）。</li>
+    <li><b>内存：</b>支持 <b>DDR4-2400</b>（比 v5 的 2133 更快），兼容 DDR3L-1866 @ 1.35V（视主板）；双通道，最大 <b>64 GB</b>；支持 ECC（C236 下）。</li>
+    <li><b>核显：</b>尾号 <code>5</code> 的带 <b>HD P630</b>（Gen 9 GT2，1150MHz，无 eDRAM）；旗舰 <b>E3-1285 v6 独享 Iris Plus 650（GT3e，带 64MB eDRAM）</b>，核显转码力在 E3-1200 家族里最强。其余无核显需配独显。</li>
+    <li><b>指令集：</b>支持 <b>AVX2 / FMA3 / AES-NI / TSX-NI / SGX / vPro / VT-x / VT-d</b>；PCIe 3.0（16 条）。你关注的老 E5-4627 v2 缺的 AVX2，v6 全系都支持。</li>
+    <li><b>封装：</b>9 款桌面版均为 LGA 1151 可插拔；E3-15xx v6 为 BGA 焊死在移动工作站/媒体服务器主板上。</li>
+  </ul>
+  <div class="callout">
+    <b>怎么选（v6 适用场景）：</b>
+    <br>• <b>想延续 E3 路线但被封锁困住？</b> 认清现实：v6 仍需 C232/C236 服务器板，整机成本接近甚至超过 Core i7 + Z270。无核显 4C8T 算力对应 <b>E3-1230 v6（3.5/3.9, 72W）</b> 或 <b>E3-1240 v6（3.7/4.1）</b>。
+    <br>• <b>最高单核性能（最后一代 E3）</b> → <b>E3-1280 v6</b>（4.2/3.9，无核显）或旗舰 <b>E3-1285 v6</b>（4.5/4.1，Iris Plus 650 带 eDRAM，核显最强还能转码）。
+    <br>• <b>带核显转码 / 远程工作站</b> → <b>E3-1245 v6</b>（主力带 P630）或 <b>E3-1275 v6</b>（4.2GHz 带核显）。
+    <br>• <b>纯游戏 U？</b> 同代 Core i5-7600K / i7-7700K + Z270 更自由、还能超频，且 E3 上不了消费板——主流玩家直接上消费级酷睿即可。
+    <br>• <b>E3-1200 到此为止：</b> 若还要更新平台，请关注接任者 <b>Xeon E-2100 / E-2200（Coffee Lake，C242/C246，LGA 1151 v2）</b> 或当代 <b>Xeon E-2300 / E-2400（Rocket Lake，C256/C252）</b>。
+  </div>
+</section>
+
+<footer>
+  数据来源：Intel ARK 产品规格库（E3 v6 家族页，共 14 款含 5 款 E3-15xx v6 移动/嵌入式）+ 6donline 发布的 Kaby Lake Xeon 规格整理（核显 HD P630 / Iris Plus 650、TDP 72/73/79W 交叉确认）。
+  交叉核对 ARK 各型号页（E3-1240 v6 等）。<br>
+  本页为静态离线资料，规格以 Intel 官方 ARK 为准。E3-1200 v6 是 E3-1200 编号的收官之作，须配 C232/C236 服务器主板；参数可能随版本变动，装机前请再次核对。
+</footer>
+
+</div>
+</body>
+</html>

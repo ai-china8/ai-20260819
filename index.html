@@ -3,67 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的静态网站</title>
-<meta name="description" content="一个托管在 GitHub Pages 的静态网站示例">
-<link rel="stylesheet" href="assets/css/style.css">
+<title>至强 CPU 参数库 · Intel Xeon 全系列速查</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e3e7ee; --brand:#0a66c2; --brand2:#0e7c66;
+    --chip:#eef3fb; --warn:#b8860b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:26px 18px 60px}
+  header.hero{background:linear-gradient(135deg,#0a66c2,#0e7c66);color:#fff;border-radius:18px;padding:34px 30px;margin-bottom:22px;
+    box-shadow:0 8px 24px rgba(10,102,194,.18)}
+  header.hero h1{margin:0 0 8px;font-size:30px;letter-spacing:1px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14.5px}
+  .tagrow{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);padding:5px 12px;border-radius:999px;font-size:12.5px}
+  .search{position:sticky;top:10px;z-index:5;margin:0 0 26px;display:flex;gap:10px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:0 2px 8px rgba(20,30,50,.05)}
+  .search input{flex:1;border:0;outline:0;font-size:15px;background:transparent;color:var(--ink);padding:6px 4px}
+  .search .ic{color:var(--brand);font-size:18px}
+  .search .cnt{font-size:12.5px;color:var(--sub);white-space:nowrap}
+  section.cat{margin-bottom:30px}
+  .cat h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+  .cat h2 .bar{width:6px;height:22px;border-radius:3px;background:var(--brand)}
+  .cat .csub{color:var(--sub);font-size:13px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px}
+  a.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;
+    transition:.16s ease;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  a.card:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:0 8px 20px rgba(10,102,194,.14)}
+  .ctitle{font-size:16px;font-weight:700;color:var(--ink)}
+  .cmeta{font-size:12px;color:var(--brand);font-weight:600}
+  .cdesc{font-size:12.8px;color:var(--sub);line-height:1.5}
+  .cgo{margin-top:auto;font-size:12.5px;color:var(--brand2);font-weight:600;padding-top:6px}
+  .hide{display:none!important}
+  #empty{display:none;text-align:center;color:var(--sub);padding:40px 0;font-size:14px}
+  footer{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;color:var(--sub);font-size:12.5px;line-height:1.7}
+  footer b{color:var(--ink)}
+</style>
 </head>
 <body>
+<div class="wrap">
+  <header class="hero">
+    <h1>至强 CPU 参数库</h1>
+    <p>Intel Xeon 全系列参数速查 · 单文件静态站，覆盖 E-2100 / E-2200、E3-1200(v1–v6)、W 系列与横向对比</p>
+    <div class="tagrow">
+      <span class="tag">12 个参数页</span>
+      <span class="tag">GitHub Pages 托管</span>
+      <span class="tag">自定义域名 ai-chin-a.space</span>
+      <span class="tag">最后更新 2026-08-19</span>
+    </div>
+  </header>
 
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="#home">MySite</a>
-    <button class="nav-toggle" aria-label="菜单" id="navToggle">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">首页</a></li>
-      <li><a href="#about">关于</a></li>
-      <li><a href="#projects">项目</a></li>
-      <li><a href="#contact">联系</a></li>
-    </ul>
-  </nav>
-</header>
+  <div class="search">
+    <span class="ic">🔍</span>
+    <input id="q" type="text" placeholder="搜索系列 / 架构 / 代号，例如 “E3 v3” 或 “Coffee Lake”" autocomplete="off">
+    <span class="cnt" id="cnt"></span>
+  </div>
 
-<main>
-  <section class="hero" id="home">
-    <h1>欢迎来到我的静态网站</h1>
-    <p class="lead">这是一个托管在 GitHub Pages 的纯静态站点示例，轻量、免费、无需服务器。</p>
-    <a class="btn" href="#about">了解更多</a>
-  </section>
-
-  <section class="section" id="about">
-    <h2>关于本站</h2>
-    <p>本站点使用纯 HTML / CSS / JavaScript 构建，没有后端、没有数据库。所有页面都是静态文件，由 GitHub Pages 直接托管，自动获得 HTTPS 与全球 CDN 加速。</p>
-    <p>你可以把这里当成个人主页、项目展示页或文档站点的起点，按需替换文字与图片即可。</p>
-  </section>
-
-  <section class="section" id="projects">
-    <h2>项目</h2>
-    <div class="cards">
-      <article class="card">
-        <h3>项目一</h3>
-        <p>在这里介绍你的第一个项目，描述它解决了什么问题。</p>
-      </article>
-      <article class="card">
-        <h3>项目二</h3>
-        <p>第二个项目简介，可放链接或截图。</p>
-      </article>
-      <article class="card">
-        <h3>项目三</h3>
-        <p>第三个项目简介，自由发挥。</p>
-      </article>
+  <section class="cat" data-cat>
+    <h2><span class="bar"></span>至强 E-2100 / E-2200 系列</h2>
+    <p class="csub">面向单路服务器与入门工作站的 Coffee Lake 平台，常被视为经典 E3 的接班人。</p>
+    <div class="grid">
+      <a class="card" href="至强E-2100系列参数大全.html">
+        <div class="ctitle">至强 E-2100 系列</div>
+        <div class="cmeta">Coffee Lake · 单路主流</div>
+        <div class="cdesc">入门单路服务器/轻量工作站，接替 E3-1200 的主力型号。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E-2200系列参数大全.html">
+        <div class="ctitle">至强 E-2200 系列</div>
+        <div class="cmeta">Coffee Lake Refresh · 单路</div>
+        <div class="cdesc">E-2100 的频率/核心数小幅提升版，性价比之选。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
     </div>
   </section>
 
-  <section class="section" id="contact">
-    <h2>联系</h2>
-    <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
-    <p>GitHub：<a href="https://github.com/" target="_blank" rel="noopener">github.com/yourname</a></p>
+  <section class="cat" data-cat>
+    <h2><span class="bar"></span>至强 E3-1200 系列（v1 – v6）</h2>
+    <p class="csub">从 v1(Sandy Bridge) 到 v6(Kaby Lake) 的六代演进，小型服务器、NAS、软路由与家用主机的经典之选。</p>
+    <div class="grid">
+      <a class="card" href="至强E3-1200-v1系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v1</div>
+        <div class="cmeta">Sandy Bridge · 2011</div>
+        <div class="cdesc">初代 E3，LGA1155，开启家用服务器的性价比时代。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E3-1200-v2系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v2</div>
+        <div class="cmeta">Ivy Bridge · 2012</div>
+        <div class="cdesc">LGA1155 二代，能效与核显升级，洋垃圾市场常青款。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E3-1200-v3系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v3</div>
+        <div class="cmeta">Haswell · 2013</div>
+        <div class="cdesc">LGA1150，需配合 C2xx 芯片组，家用/NAS 黄金一代。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E3-1200-v4系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v4</div>
+        <div class="cmeta">Broadwell · 2015</div>
+        <div class="cdesc">LGA1150 末代，14nm 初尝试，型号相对精简。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E3-1200-v5系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v5</div>
+        <div class="cmeta">Skylake · 2015</div>
+        <div class="cdesc">转 LGA1151，部分型号改为 BGA 封装，平台门槛变化。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强E3-1200-v6系列参数大全.html">
+        <div class="ctitle">至强 E3-1200 v6</div>
+        <div class="cmeta">Kaby Lake · 2017</div>
+        <div class="cdesc">E3 末代，LGA1151，之后消费级至强逐步让位 E-2100。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+    </div>
   </section>
-</main>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> MySite · 由 GitHub Pages 托管</p>
-</footer>
+  <section class="cat" data-cat>
+    <h2><span class="bar"></span>至强 W 系列（工作站）</h2>
+    <p class="csub">单路到多路工作站平台，核心数与 PCIe 扩展性更强，面向创作与计算负载。</p>
+    <div class="grid">
+      <a class="card" href="至强W-1200系列参数大全.html">
+        <div class="ctitle">至强 W-1200 系列</div>
+        <div class="cmeta">Comet Lake · 单路工作站</div>
+        <div class="cdesc">桌面级工作站台，高睿频、强单核，适合剪辑/建模。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强W-1300系列参数大全.html">
+        <div class="ctitle">至强 W-1300 系列</div>
+        <div class="cmeta">Rocket Lake · 单路工作站</div>
+        <div class="cdesc">W-1200 的继任，IPC 提升，单路创作主力。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+      <a class="card" href="至强W-2100系列参数大全.html">
+        <div class="ctitle">至强 W-2100 系列</div>
+        <div class="cmeta">Skylake-W · 多路工作站</div>
+        <div class="cdesc">高核心数多路平台，面向重度渲染与仿真。</div>
+        <span class="cgo">查看参数 →</span>
+      </a>
+    </div>
+  </section>
 
-<script src="assets/js/main.js"></script>
+  <section class="cat" data-cat>
+    <h2><span class="bar"></span>横向对比</h2>
+    <p class="csub">同价位桌面 i3 与几款至强的实际定位对比，帮你选型不踩坑。</p>
+    <div class="grid">
+      <a class="card" href="i3-8100对比Xeon-E2124G与E3-1225v6.html">
+        <div class="ctitle">i3-8100 对比 Xeon E-2124G 与 E3-1225 v6</div>
+        <div class="cmeta">同价位选型 · 实战对比</div>
+        <div class="cdesc">桌面四核 vs 至强单路，从价格、功耗到扩展性逐项拆解。</div>
+        <span class="cgo">查看对比 →</span>
+      </a>
+    </div>
+  </section>
+
+  <div id="empty">没有匹配的参数页，换个关键词试试。</div>
+
+  <footer>
+    <b>至强 CPU 参数库</b> · 本站为纯静态站点，由 <b>GitHub Pages</b> 托管，自定义域名 <b>ai-chin-a.space</b>。<br>
+    所有参数页均为单文件 HTML（样式内联），可离线打开、可随意转载；数据仅供选型参考，以官方规格书为准。
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var q=document.getElementById('q');
+    var cnt=document.getElementById('cnt');
+    var empty=document.getElementById('empty');
+    function update(){
+      var v=q.value.trim().toLowerCase();
+      var total=0,shown=0;
+      document.querySelectorAll('[data-cat]').forEach(function(cat){
+        var vis=0;
+        cat.querySelectorAll('.card').forEach(function(c){
+          var show = c.textContent.toLowerCase().indexOf(v)>-1;
+          c.classList.toggle('hide',!show);
+          if(show){vis++;shown++;}
+        });
+        cat.classList.toggle('hide',vis===0);
+      });
+      document.querySelectorAll('.card').forEach(function(){total++;});
+      cnt.textContent = v? ('匹配 '+shown+' / '+total) : '';
+      empty.style.display = (v && shown===0)? 'block':'none';
+    }
+    q.addEventListener('input',update);
+  })();
+</script>
 </body>
 </html>
