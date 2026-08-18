@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的静态网站</title>
+<meta name="description" content="一个托管在 GitHub Pages 的静态网站示例">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="#home">MySite</a>
+    <button class="nav-toggle" aria-label="菜单" id="navToggle">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#projects">项目</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <h1>欢迎来到我的静态网站</h1>
+    <p class="lead">这是一个托管在 GitHub Pages 的纯静态站点示例，轻量、免费、无需服务器。</p>
+    <a class="btn" href="#about">了解更多</a>
+  </section>
+
+  <section class="section" id="about">
+    <h2>关于本站</h2>
+    <p>本站点使用纯 HTML / CSS / JavaScript 构建，没有后端、没有数据库。所有页面都是静态文件，由 GitHub Pages 直接托管，自动获得 HTTPS 与全球 CDN 加速。</p>
+    <p>你可以把这里当成个人主页、项目展示页或文档站点的起点，按需替换文字与图片即可。</p>
+  </section>
+
+  <section class="section" id="projects">
+    <h2>项目</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>项目一</h3>
+        <p>在这里介绍你的第一个项目，描述它解决了什么问题。</p>
+      </article>
+      <article class="card">
+        <h3>项目二</h3>
+        <p>第二个项目简介，可放链接或截图。</p>
+      </article>
+      <article class="card">
+        <h3>项目三</h3>
+        <p>第三个项目简介，自由发挥。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>联系</h2>
+    <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
+    <p>GitHub：<a href="https://github.com/" target="_blank" rel="noopener">github.com/yourname</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> MySite · 由 GitHub Pages 托管</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
