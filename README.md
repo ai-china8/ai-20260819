@@ -37,6 +37,17 @@ my-website/
 
 
 
+## 上线前最后 4 步（GitHub 网页端，必须由你点击）
+
+代码、`CNAME`、域名解析（A / www CNAME / TXT）均已就绪并实测通过。仅差网页端启用：
+
+1. 进仓库 `ai-20260819` → **Settings → Pages → Source**：选 `main` 分支、`/ (root)` 目录 → **Save**。
+2. 同一页 **Custom domain**：因仓库根已有 `CNAME`（`ai-chin-a.space`），通常会自动填入；没自动填就手填 → Save。
+3. 等状态变绿（DNS 校验通过，通常几分钟）后勾选 **Enforce HTTPS**（Let's Encrypt 免费证书，自动续期）。
+4. 账号级验证：右上角头像 → **Settings → Pages → Add a verified domain** → 找到 `ai-chin-a.space` 点 **Verify**（TXT 已实测生效）。
+
+完成后访问 https://ai-chin-a.space 即可；HTTPS 证书签发前的空窗期，可先用 https://ai-china8.github.io/ai-20260819 查看站点。
+
 ## 本地预览
 
 直接用浏览器打开 `index.html` 即可；或起一个本地静态服务器：
