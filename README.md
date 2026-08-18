@@ -79,9 +79,9 @@ git pull
 
 | 主机记录 | 记录类型 | 线路类型 | 记录值 | TTL |
 | --- | --- | --- | --- | --- |
-| www | CNAME | 默认 | 你的用户名.github.io | 600 |
+| www | CNAME | 默认 | ai-china8.github.io | 600 |
 
-> 把 `你的用户名.github.io` 换成你实际的 GitHub Pages 默认域名（例如 `octocat.github.io`）。
+> 你的 GitHub 用户名为 `ai-china8`，默认域名为 `ai-china8.github.io`，已填入上表。
 
 ### 2. GitHub 仓库设置自定义域名
 仓库 → Settings → Pages → Custom domain 填入 `ai-chin-a.space` → Save。
