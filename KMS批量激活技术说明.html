@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KMS 批量激活技术说明 · 来自 ai-chin-a.space</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#ffffff; --ink:#1f2937; --muted:#667085;
+    --line:#e6eaf0; --blue:#2563eb; --blue2:#1d4ed8; --green:#059669;
+    --red:#dc2626; --amber:#d97706; --code:#0f172a; --tag:#eef2ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 60px}
+  header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:16px;padding:30px 28px;margin-bottom:22px}
+  header h1{font-size:26px;letter-spacing:.5px}
+  header .sub{margin-top:8px;opacity:.92;font-size:14px}
+  .badge{display:inline-block;margin-top:14px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 14px;font-size:13px}
+  .legal{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;
+    padding:14px 16px;margin-bottom:22px;font-size:13.5px}
+  .legal b{color:#7c2d12}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:22px}
+  .toc h3{font-size:15px;margin-bottom:8px;color:var(--blue2)}
+  .toc a{color:var(--blue);text-decoration:none;margin-right:18px;font-size:13.5px;line-height:2}
+  .toc a:hover{text-decoration:underline}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:18px}
+  section h2{font-size:18px;margin-bottom:12px;color:var(--blue2);border-left:4px solid var(--blue);padding-left:10px}
+  section p{margin:8px 0;color:#374151}
+  section ul{margin:8px 0 8px 22px} section li{margin:5px 0}
+  .note{background:var(--tag);border-left:3px solid var(--blue);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+  .warn{background:#fef2f2;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:#7f1d1d}
+  .ok{background:#ecfdf5;border-left:3px solid var(--green);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:#064e3b}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f1f5f9;color:#334155}
+  code{background:#f1f5f9;border-radius:5px;padding:2px 6px;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;color:var(--code);font-size:13px}
+  .cmd{display:block;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:10px 14px;margin:8px 0;
+    font-family:Consolas,monospace;font-size:13.5px;position:relative}
+  .copybtn{position:absolute;top:7px;right:8px;background:#334155;color:#fff;border:none;border-radius:6px;
+    padding:3px 10px;font-size:12px;cursor:pointer}
+  .copybtn:hover{background:#475569}
+  .pill{display:inline-block;background:var(--tag);color:var(--blue2);border-radius:6px;padding:2px 9px;font-size:12.5px;margin:2px 4px 2px 0}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px}
+  footer b{color:var(--blue2)}
+  .src a{color:var(--blue);text-decoration:none} .src a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>KMS 批量激活技术说明</h1>
+    <div class="sub">Microsoft Key Management Service（密钥管理服务）原理、合法部署与常见误区</div>
+    <span class="badge">📡 来自 ai-chin-a.space 收集整理</span>
+  </header>
+
+  <div class="legal">
+    <b>合规声明：</b>本页仅作<b>技术科普与合法运维参考</b>。KMS 是微软官方的<b>批量授权（Volume Licensing）激活技术</b>，
+    仅授权持有批量许可协议的组织在自有环境内部署。本页<b>不提供、不罗列任何第三方 / 来路不明的公共 KMS 服务器地址</b>，
+    也不鼓励任何超出授权范围的激活行为。激活密钥与主机均须来自你方合法的批量许可（VLSC）。
+  </div>
+
+  <div class="toc">
+    <h3>目录</h3>
+    <a href="#what">1. 什么是 KMS</a>
+    <a href="#how">2. 工作原理</a>
+    <a href="#keys">3. 密钥概念（CSVLK / GVLK）</a>
+    <a href="#deploy">4. 企业如何合法自建 KMS</a>
+    <a href="#cmd">5. 常用 slmgr 命令</a>
+    <a href="#risk">6. 为什么别连公共 KMS</a>
+    <a href="#alt">7. 合法替代方案</a>
+    <a href="#doc">8. 官方文档</a>
+  </div>
+
+  <section id="what">
+    <h2>1. 什么是 KMS</h2>
+    <p><b>KMS（Key Management Service，密钥管理服务）</b>是微软为<b>批量授权客户</b>提供的本地激活方式。
+    它允许一个组织在内网中运行一台（或多台）<b>KMS 主机（激活服务器）</b>，让同网的客户端操作系统与
+    Office 自动完成激活，无需每台都连微软、也无需逐个输入零售密钥。</p>
+    <p>它和零售激活（数字许可证 / 产品密钥）、MAK（多次激活密钥）并列，是三种主要激活方式之一，
+    专门面向中大型组织的运维场景。</p>
+    <div class="note">📌 KMS 本身完全合法，是微软官方技术；问题只出在"用非授权主机去激活正版未授权副本"这一行为上。</div>
+  </section>
+
+  <section id="how">
+    <h2>2. 工作原理</h2>
+    <ul>
+      <li><b>角色分工：</b>KMS 主机持有 <code>KMS Host Key（CSVLK）</code>；客户端持有 <code>GVLK（通用批量授权密钥）</code>，自动向主机请求激活。</li>
+      <li><b>激活阈值：</b>Windows 客户端需达到 <b>25 台</b>才触发激活；Office 需 <b>5 台</b>。低于阈值时仅进入"宽限期"，不影响试用。</li>
+      <li><b>有效期与续期：</b>激活后有效期 <b>180 天</b>；客户端每 <b>7 天</b>主动回连主机续期，联网正常则"无感永久有效"。</li>
+      <li><b>自动发现：</b>主机通过 DNS 发布 <code>_vlmcs._tcp</code> 的 SRV 记录，客户端无需手填地址即可发现主机。</li>
+      <li><b>无需公网：</b>KMS 走内网即可，主机本身也只在首次安装 CSVLK 时需要连一次微软。</li>
+    </ul>
+    <div class="note">📌 GVLK（客户端密钥）是公开文档，已另页整理；CSVLK（主机密钥）则需从 VLSC 批量门户获取，<b>不公开</b>。</div>
+  </section>
+
+  <section id="keys">
+    <h2>3. 密钥概念（CSVLK / GVLK）</h2>
+    <table>
+      <tr><th>密钥类型</th><th>用途</th><th>来源</th><th>是否公开</th></tr>
+      <tr><td><b>GVLK</b><br>通用批量授权密钥</td><td>装在<b>客户端</b>上，告诉系统"我是 KMS 客户端，去找 KMS 主机激活"</td><td>微软官方文档公开发布</td><td>✅ 公开<br><span class="pill">见本站 GVLK 大全</span></td></tr>
+      <tr><td><b>CSVLK</b><br>KMS 主机密钥</td><td>装在<b>KMS 主机</b>上，使其具备签发激活响应的资格</td><td>VLSC 批量许可门户（组织专属）</td><td>❌ 不公开</td></tr>
+      <tr><td><b>MAK</b><br>多次激活密钥</td><td>一次性联网激活（替代 KMS），适合小型/分散环境</td><td>VLSC</td><td>❌ 不公开</td></tr>
+    </table>
+    <div class="ok">✅ 关键点：单独拿着 GVLK 并不能激活系统——它只是"客户端侧的敲门砖"，必须配上一台<b>持有合法 CSVLK 的授权 KMS 主机</b>才能真正激活。</div>
+  </section>
+
+  <section id="deploy">
+    <h2>4. 企业如何合法自建 KMS</h2>
+    <p>持有微软批量许可协议（如 Enterprise Agreement、Open Value、教育授权等）的组织，可按下列步骤搭建内网 KMS：</p>
+    <ul>
+      <li><b>① 获取 CSVLK：</b>登录 <code>VLSC（Volume Licensing Service Center）</code>，下载对应产品的 KMS 主机密钥。</li>
+      <li><b>② 安装主机：</b>在一台 Windows Server 上安装批量激活服务（VAMT 或角色），用 <code>slmgr /ipk &lt;CSVLK&gt;</code> 装入主机密钥并激活主机自身。</li>
+      <li><b>③ 发布 DNS：</b>在内部 DNS 创建 <code>_vlmcs._tcp</code> SRV 记录指向该主机，客户端自动发现。</li>
+      <li><b>④ 客户端就绪：</b>客户端装入 GVLK（多数批量镜像已内置），到达阈值后自动激活、180 天自动续期。</li>
+    </ul>
+    <div class="note">📌 这套流程全程使用你方<b>自有合法授权</b>，是 KMS 的合规用法。公共/第三方 KMS 主机不在你的授权范围内，连接它们即超出许可。</div>
+  </section>
+
+  <section id="cmd">
+    <h2>5. 常用 slmgr 命令（合法运维用）</h2>
+    <p><code>slmgr.vbs</code> 是 Windows 内置的授权管理脚本（需管理员 CMD/PowerShell）。下列命令用于<b>自有授权的 KMS 环境</b>排障：</p>
+    <span class="cmd">slmgr /ipk &lt;GVLK&gt;<span class="copybtn" onclick="cp(this)">复制</span></span>
+    <span class="cmd">slmgr /skms kms.your-domain.local<span class="copybtn" onclick="cp(this)">复制</span></span>
+    <span class="cmd">slmgr /ato<span class="copybtn" onclick="cp(this)">复制</span></span>
+    <span class="cmd">slmgr /dlv<span class="copybtn" onclick="cp(this)">复制</span></span>
+    <span class="cmd">slmgr /upk<span class="copybtn" onclick="cp(this)">复制</span></span>
+    <table>
+      <tr><th>命令</th><th>作用</th></tr>
+      <tr><td><code>slmgr /ipk &lt;GVLK&gt;</code></td><td>安装指定的 GVLK 客户端密钥</td></tr>
+      <tr><td><code>slmgr /skms &lt;host&gt;</code></td><td>手动指定 KMS 主机地址（不依赖 DNS 发现时）</td></tr>
+      <tr><td><code>slmgr /ato</code></td><td>立即触发激活尝试</td></tr>
+      <tr><td><code>slmgr /dlv</code></td><td>显示详细激活与授权信息（含 KMS 计数）</td></tr>
+      <tr><td><code>slmgr /upk</code></td><td>卸载当前产品密钥</td></tr>
+    </table>
+    <div class="warn">⚠️ 切勿将上述命令与"公共 KMS 主机地址"拼接使用于非授权副本——这属于规避授权，违反软件许可协议。</div>
+  </section>
+
+  <section id="risk">
+    <h2>6. 为什么不要连接来路不明的公共 KMS</h2>
+    <ul>
+      <li><b>法律风险：</b>用非授权 KMS 主机激活未授权副本，违反微软软件许可条款，属授权规避；企业或机构使用可能面临合规审计与赔偿。</li>
+      <li><b>安全风险：</b>你无法验证第三方主机的运营者。历史上有假冒 KMS 服务捆绑恶意软件、收集内网信息、甚至投递勒索程序的案例。</li>
+      <li><b>稳定性风险：</b>公共主机随时关停或被封，激活 180 天后无法续期，系统回到未激活状态、功能受限。</li>
+      <li><b>"正版"状态存疑：</b>此类激活不被微软认可为合法授权，无法获得正常支持与更新保障。</li>
+    </ul>
+    <div class="warn">⚠️ 因此本页<b>刻意不罗列</b>任何公共 KMS 服务器清单——这类清单只会在法律与安全上把使用者推向风险。</div>
+    <div class="ok">✅ 如需使用 KMS 激活，请通过你方<b>批量许可（VLSC）</b>获取 CSVLK 自建 KMS 主机；或向组织 IT 管理员索取<b>授权的内网 KMS 主机地址</b>（客户端经内部 DNS <code>_vlmcs._tcp</code> 自动发现），<b>勿自行联网寻找来路不明的公共 KMS 服务</b>。</div>
+  </section>
+
+  <section id="alt">
+    <h2>7. 合法替代方案</h2>
+    <table>
+      <tr><th>场景</th><th>推荐激活方式</th></tr>
+      <tr><td>个人 / 单台设备</td><td>零售购买 → <b>数字许可证</b>（绑定微软账号/硬件）</td></tr>
+      <tr><td>中小组织、分散办公</td><td><b>MAK</b>（多次激活密钥，一次性联网）</td></tr>
+      <tr><td>大型企业内网</td><td>批量许可 + <b>自有 KMS 主机</b>（即第 4 节）</td></tr>
+      <tr><td>学校 / 科研机构</td><td>教育批量授权（如 Azure Dev Tools / 教育版订阅）</td></tr>
+      <tr><td>已加入 Entra ID 的设备</td><td><b>订阅激活 / Windows 订阅许可</b>（自动）</td></tr>
+    </table>
+    <div class="ok">✅ 一句话：有授权选 KMS/MAK；没授权请走零售或订阅渠道，别用公共 KMS 兜底。</div>
+  </section>
+
+  <section id="doc" class="src">
+    <h2>8. 官方文档（权威来源）</h2>
+    <ul>
+      <li>KMS 客户端激活密钥（GVLK）：<a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys" target="_blank" rel="noopener">learn.microsoft.com · KMS client activation keys</a></li>
+      <li>使用 KMS 激活（VAMT）：<a href="https://learn.microsoft.com/en-us/windows/deployment/volume-activation/activate-using-key-management-service-vamt" target="_blank" rel="noopener">learn.microsoft.com · Activate using KMS</a></li>
+      <li>批量激活规划：<a href="https://learn.microsoft.com/en-us/windows/deployment/volume-activation/plan-for-volume-activation-client" target="_blank" rel="noopener">learn.microsoft.com · Plan for volume activation</a></li>
+      <li>VLSC 批量许可门户：<a href="https://www.microsoft.com/Licensing/servicecenter" target="_blank" rel="noopener">microsoft.com/Licensing/servicecenter</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    本页由 <b>ai-chin-a.space</b> 收集整理 · 仅供技术科普与合法运维参考 · 数据来源 Microsoft Learn 官方文档<br>
+    与本站《GVLK 密钥大全》互为补充：本页讲"激活服务器侧"，GVLK 页讲"客户端密钥侧"。
+  </footer>
+
+</div>
+<script>
+function cp(btn){
+  var txt=btn.parentElement.textContent.replace('复制','').trim();
+  navigator.clipboard.writeText(txt).then(function(){
+    var o=btn.textContent; btn.textContent='已复制'; setTimeout(function(){btn.textContent=o;},1200);
+  }).catch(function(){alert('复制失败，请手动选择：\n'+txt);});
+}
+</script>
+<script src="assets/js/site-nav.js"></script>
+</body>
+</html>
