@@ -1,0 +1,39 @@
+在开始菜单上右键，选择 Windows PowerShell(管理员)，依次输入以下命令即可激活成功
+
+对于win11，win10的ltsc版本
+
+slmgr /ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+slmgr /skms kms.03k.org
+slmgr /ato
+1、安装产品密钥，不同的操作系统激活码不一样，网上搜索下有很多，这些激活码不能在线直接激活，但可以通过kms服务器激活。
+
+2、设置密钥管理服务器，如果不可用可以换一个 zh.us.to，或者网上搜下 kms服务器地址
+
+3、开始激活，要等一会。成功后看下我的电脑的属性，看激活没，如果没有就重启下电脑，一般就成功了。
+
+ 
+
+不想一条条输入也可以建立一个bat文件，然后右键，以管理员身份运行。
+
+注意bat中命令不要直接复制上面的，有时会出错，因为需要前一个确认完成后才能执行下一个，可以使用&&操作符来确保命令在上一个命令完成后才执行下一个命令。
+
+@echo off
+slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 && slmgr /skms kms.03k.org && slmgr /ato
+其他可能用到的命令
+
+slmgr /upk ::卸载激活码
+slmgr /xpr ::查看过期时间 激活日算起半年
+KMS服务器
+需要ping测试是否有效
+
+zh.us.to 
+kms.03k.org 
+kms.chinancce.com 
+kms.shuax.com 
+kms.dwhd.org 
+kms.luody.info 
+kms.digiboy.ir 
+kms.lotro.cc 
+ss.yechiu.xin 
+www.zgbs.cc 
+cy2617.jios.org 
