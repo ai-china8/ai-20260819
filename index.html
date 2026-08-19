@@ -3,14 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>至强 CPU 参数库 · Intel Xeon 全系列速查</title>
-<link rel="stylesheet" href="assets/css/site-theme.css">
+<title>一文斋 · 闲聊 · 电脑技能 · 城市八卦</title>
+<style>
+  :root{
+    --bg:#f4f6fb;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --line:#e8ebf2;
+    --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+    --shadow-h:0 4px 12px rgba(16,24,40,.08), 0 16px 40px rgba(16,24,40,.12);
+    --radius:16px;
+    /* 8 色和谐调色板，每条卡片一个色块 */
+    --c1:#6366f1; --c2:#0ea5e9; --c3:#10b981; --c4:#f59e0b;
+    --c5:#f43f5e; --c6:#8b5cf6; --c7:#14b8a6; --c8:#ec4899;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 480px at 80% -10%, #e9edff 0%, rgba(233,237,255,0) 60%),
+      radial-gradient(900px 420px at -10% 0%, #e6f7ff 0%, rgba(230,247,255,0) 55%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:0 16px 64px;
+  }
+  .wrap{max-width:1120px;margin:0 auto;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    margin:40px 0 28px;
+    padding:40px 40px 34px;
+    border-radius:24px;
+    color:#fff;
+    background:linear-gradient(135deg,#4f46e5 0%, #6366f1 38%, #0ea5e9 100%);
+    box-shadow:0 18px 50px rgba(79,70,229,.28);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;
+    background:rgba(255,255,255,.12);border-radius:50%;
+  }
+  .hero::before{
+    content:"";position:absolute;right:80px;bottom:-90px;width:200px;height:200px;
+    background:rgba(255,255,255,.08);border-radius:50%;
+  }
+  .hero h1{font-size:34px;letter-spacing:.5px;font-weight:800;position:relative;}
+  .hero p{margin-top:10px;font-size:15.5px;opacity:.92;max-width:720px;position:relative;}
+  .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;position:relative;}
+  .tag{
+    font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;
+    background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);
+    backdrop-filter:blur(4px);
+  }
+
+  /* ---------- SEARCH ---------- */
+  .search{
+    position:sticky;top:14px;z-index:5;
+    display:flex;align-items:center;gap:10px;
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:12px 16px;margin:0 0 30px;
+    box-shadow:var(--shadow);
+  }
+  .search .ic{font-size:18px;opacity:.6;}
+  .search input{
+    flex:1;border:none;outline:none;font-size:15px;background:transparent;color:var(--ink);
+  }
+  .search input::placeholder{color:#9aa3b2;}
+  .search .cnt{font-size:13px;color:var(--muted);white-space:nowrap;font-weight:600;}
+
+  /* ---------- CATEGORY ---------- */
+  .cat{margin-bottom:34px;}
+  .cat h2{
+    display:flex;align-items:center;gap:12px;
+    font-size:20px;font-weight:800;margin-bottom:4px;
+  }
+  .cat h2 .bar{
+    width:6px;height:22px;border-radius:3px;flex:none;
+    background:linear-gradient(180deg,var(--c1),#818cf8);
+  }
+  .cat:nth-of-type(2) h2 .bar{background:linear-gradient(180deg,var(--c2),#38bdf8);}
+  .cat:nth-of-type(3) h2 .bar{background:linear-gradient(180deg,var(--c3),#34d399);}
+  .cat:nth-of-type(4) h2 .bar{background:linear-gradient(180deg,var(--c6),#a78bfa);}
+  .cat:nth-of-type(5) h2 .bar{background:linear-gradient(180deg,var(--c4),#fbbf24);}
+  .csub{color:var(--muted);font-size:14px;margin:0 0 18px 18px;}
+
+  /* ---------- GRID + CARDS ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:18px;align-items:stretch;
+  }
+  .card{
+    position:relative;
+    display:flex;flex-direction:column;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 20px 18px;
+    text-decoration:none;color:inherit;
+    box-shadow:var(--shadow);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:var(--accent,var(--c1));
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-h);border-color:transparent;}
+  .card .top{
+    display:flex;align-items:center;gap:14px;margin-bottom:12px;
+  }
+  /* 每一条的色彩块 */
+  .block{
+    flex:none;width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:14px;letter-spacing:.3px;
+    background:var(--accent,var(--c1));
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+  }
+  .ctitle{font-size:16.5px;font-weight:700;line-height:1.35;}
+  .cmeta{
+    font-size:12.5px;font-weight:600;color:var(--accent,var(--c1));
+    margin-top:2px;
+  }
+  .cdesc{font-size:13.5px;color:var(--muted);margin-top:6px;flex:1;}
+  .cgo{
+    margin-top:14px;font-size:13px;font-weight:700;color:var(--accent,var(--c1));
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  .card:hover .cgo{gap:8px;}
+
+  /* 颜色分配（每条一个色块） */
+  .c1{--accent:var(--c1);} .c2{--accent:var(--c2);} .c3{--accent:var(--c3);}
+  .c4{--accent:var(--c4);} .c5{--accent:var(--c5);} .c6{--accent:var(--c6);}
+  .c7{--accent:var(--c7);} .c8{--accent:var(--c8);}
+
+  .hide{display:none !important;}
+
+  #empty{
+    display:none;text-align:center;color:var(--muted);
+    padding:40px;font-size:15px;background:var(--panel);
+    border:1px dashed var(--line);border-radius:var(--radius);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:40px;padding:24px;background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);
+    color:var(--muted);font-size:13px;text-align:center;box-shadow:var(--shadow);
+  }
+  footer b{color:var(--ink);}
+
+  @media (max-width:640px){
+    .hero{padding:28px 22px;} .hero h1{font-size:26px;}
+    .grid{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 <div class="wrap">
   <header class="hero">
-    <h1>至强 CPU 参数库</h1>
-    <p>Intel Xeon 全系列参数速查 · 含 GVLK 密钥库与 KMS 激活说明 · 单文件静态站</p>
+    <h1>一文斋</h1>
+    <p>闲聊 · 电脑技能 · 城市八卦~</p>
     <div class="tagrow">
       <span class="tag">12 个参数页</span>
       <span class="tag">GVLK 密钥库</span>
@@ -32,27 +191,23 @@
     <h2><span class="bar"></span>实用工具 / 授权资料</h2>
     <p class="csub">微软官方公开信息的整理页，覆盖系统授权与批量激活相关的常用查询。</p>
     <div class="grid">
-      <a class="card" href="GVLK密钥大全.html">
-        <div class="ctitle">GVLK 密钥大全</div>
-        <div class="cmeta">微软官方 KMS 客户端密钥</div>
+      <a class="card c1" href="GVLK密钥大全.html">
+        <div class="top"><span class="block">KEY</span><div><div class="ctitle">GVLK 密钥大全</div><div class="cmeta">微软官方 KMS 客户端密钥</div></div></div>
         <div class="cdesc">Windows / Office 全版本 KMS 批量激活客户端密钥，含每版本说明与一键复制，来自 ai-chin-a.space 收集。</div>
         <span class="cgo">查看密钥库 →</span>
       </a>
-      <a class="card" href="KMS批量激活技术说明.html">
-        <div class="ctitle">KMS 批量激活技术说明</div>
-        <div class="cmeta">微软 KMS 激活服务器侧</div>
+      <a class="card c2" href="KMS批量激活技术说明.html">
+        <div class="top"><span class="block">KMS</span><div><div class="ctitle">KMS 批量激活技术说明</div><div class="cmeta">微软 KMS 激活服务器侧</div></div></div>
         <div class="cdesc">KMS 原理、合法自建步骤、slmgr 命令与公共 KMS 风险科普，来自 ai-chin-a.space 收集。</div>
         <span class="cgo">查看说明 →</span>
       </a>
-      <a class="card" href="激活案例.html">
-        <div class="ctitle">激活案例</div>
-        <div class="cmeta">slmgr 三步激活法 · 合规改写</div>
+      <a class="card c3" href="激活案例.html">
+        <div class="top"><span class="block">✓</span><div><div class="ctitle">激活案例</div><div class="cmeta">slmgr 三步激活法 · 合规改写</div></div></div>
         <div class="cdesc">由「激活案例.txt」改写为合规 HTML：保留 /ipk → /skms → /ato 三步法与 slmgr 命令，移除第三方公共 KMS 地址清单，来自 ai-chin-a.space 收集。</div>
         <span class="cgo">查看案例 →</span>
       </a>
-      <a class="card" href="打火机中外贸易战.html">
-        <div class="ctitle">打火机中外贸易战</div>
-        <div class="cmeta">行业观察 · 贸易与产业链</div>
+      <a class="card c4" href="打火机中外贸易战.html">
+        <div class="top"><span class="block">🔥</span><div><div class="ctitle">打火机中外贸易战</div><div class="cmeta">行业观察 · 贸易与产业链</div></div></div>
         <div class="cdesc">从贸易摩擦、市场结构、供应链与品牌竞争四个维度梳理“打火机”为何成了中外博弈的简短缩影。</div>
         <span class="cgo">查看观察 →</span>
       </a>
@@ -63,15 +218,13 @@
     <h2><span class="bar"></span>至强 E-2100 / E-2200 系列</h2>
     <p class="csub">面向单路服务器与入门工作站的 Coffee Lake 平台，常被视为经典 E3 的接班人。</p>
     <div class="grid">
-      <a class="card" href="至强E-2100系列参数大全.html">
-        <div class="ctitle">至强 E-2100 系列</div>
-        <div class="cmeta">Coffee Lake · 单路主流</div>
+      <a class="card c1" href="至强E-2100系列参数大全.html">
+        <div class="top"><span class="block">E21</span><div><div class="ctitle">至强 E-2100 系列</div><div class="cmeta">Coffee Lake · 单路主流</div></div></div>
         <div class="cdesc">入门单路服务器/轻量工作站，接替 E3-1200 的主力型号。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E-2200系列参数大全.html">
-        <div class="ctitle">至强 E-2200 系列</div>
-        <div class="cmeta">Coffee Lake Refresh · 单路</div>
+      <a class="card c2" href="至强E-2200系列参数大全.html">
+        <div class="top"><span class="block">E22</span><div><div class="ctitle">至强 E-2200 系列</div><div class="cmeta">Coffee Lake Refresh · 单路</div></div></div>
         <div class="cdesc">E-2100 的频率/核心数小幅提升版，性价比之选。</div>
         <span class="cgo">查看参数 →</span>
       </a>
@@ -82,39 +235,33 @@
     <h2><span class="bar"></span>至强 E3-1200 系列（v1 – v6）</h2>
     <p class="csub">从 v1(Sandy Bridge) 到 v6(Kaby Lake) 的六代演进，小型服务器、NAS、软路由与家用主机的经典之选。</p>
     <div class="grid">
-      <a class="card" href="至强E3-1200-v1系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v1</div>
-        <div class="cmeta">Sandy Bridge · 2011</div>
+      <a class="card c1" href="至强E3-1200-v1系列参数大全.html">
+        <div class="top"><span class="block">v1</span><div><div class="ctitle">至强 E3-1200 v1</div><div class="cmeta">Sandy Bridge · 2011</div></div></div>
         <div class="cdesc">初代 E3，LGA1155，开启家用服务器的性价比时代。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E3-1200-v2系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v2</div>
-        <div class="cmeta">Ivy Bridge · 2012</div>
+      <a class="card c2" href="至强E3-1200-v2系列参数大全.html">
+        <div class="top"><span class="block">v2</span><div><div class="ctitle">至强 E3-1200 v2</div><div class="cmeta">Ivy Bridge · 2012</div></div></div>
         <div class="cdesc">LGA1155 二代，能效与核显升级，洋垃圾市场常青款。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E3-1200-v3系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v3</div>
-        <div class="cmeta">Haswell · 2013</div>
+      <a class="card c3" href="至强E3-1200-v3系列参数大全.html">
+        <div class="top"><span class="block">v3</span><div><div class="ctitle">至强 E3-1200 v3</div><div class="cmeta">Haswell · 2013</div></div></div>
         <div class="cdesc">LGA1150，需配合 C2xx 芯片组，家用/NAS 黄金一代。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E3-1200-v4系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v4</div>
-        <div class="cmeta">Broadwell · 2015</div>
+      <a class="card c4" href="至强E3-1200-v4系列参数大全.html">
+        <div class="top"><span class="block">v4</span><div><div class="ctitle">至强 E3-1200 v4</div><div class="cmeta">Broadwell · 2015</div></div></div>
         <div class="cdesc">LGA1150 末代，14nm 初尝试，型号相对精简。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E3-1200-v5系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v5</div>
-        <div class="cmeta">Skylake · 2015</div>
+      <a class="card c5" href="至强E3-1200-v5系列参数大全.html">
+        <div class="top"><span class="block">v5</span><div><div class="ctitle">至强 E3-1200 v5</div><div class="cmeta">Skylake · 2015</div></div></div>
         <div class="cdesc">转 LGA1151，部分型号改为 BGA 封装，平台门槛变化。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强E3-1200-v6系列参数大全.html">
-        <div class="ctitle">至强 E3-1200 v6</div>
-        <div class="cmeta">Kaby Lake · 2017</div>
+      <a class="card c6" href="至强E3-1200-v6系列参数大全.html">
+        <div class="top"><span class="block">v6</span><div><div class="ctitle">至强 E3-1200 v6</div><div class="cmeta">Kaby Lake · 2017</div></div></div>
         <div class="cdesc">E3 末代，LGA1151，之后消费级至强逐步让位 E-2100。</div>
         <span class="cgo">查看参数 →</span>
       </a>
@@ -125,21 +272,18 @@
     <h2><span class="bar"></span>至强 W 系列（工作站）</h2>
     <p class="csub">单路到多路工作站平台，核心数与 PCIe 扩展性更强，面向创作与计算负载。</p>
     <div class="grid">
-      <a class="card" href="至强W-1200系列参数大全.html">
-        <div class="ctitle">至强 W-1200 系列</div>
-        <div class="cmeta">Comet Lake · 单路工作站</div>
+      <a class="card c1" href="至强W-1200系列参数大全.html">
+        <div class="top"><span class="block">W12</span><div><div class="ctitle">至强 W-1200 系列</div><div class="cmeta">Comet Lake · 单路工作站</div></div></div>
         <div class="cdesc">桌面级工作站台，高睿频、强单核，适合剪辑/建模。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强W-1300系列参数大全.html">
-        <div class="ctitle">至强 W-1300 系列</div>
-        <div class="cmeta">Rocket Lake · 单路工作站</div>
+      <a class="card c2" href="至强W-1300系列参数大全.html">
+        <div class="top"><span class="block">W13</span><div><div class="ctitle">至强 W-1300 系列</div><div class="cmeta">Rocket Lake · 单路工作站</div></div></div>
         <div class="cdesc">W-1200 的继任，IPC 提升，单路创作主力。</div>
         <span class="cgo">查看参数 →</span>
       </a>
-      <a class="card" href="至强W-2100系列参数大全.html">
-        <div class="ctitle">至强 W-2100 系列</div>
-        <div class="cmeta">Skylake-W · 多路工作站</div>
+      <a class="card c3" href="至强W-2100系列参数大全.html">
+        <div class="top"><span class="block">W21</span><div><div class="ctitle">至强 W-2100 系列</div><div class="cmeta">Skylake-W · 多路工作站</div></div></div>
         <div class="cdesc">高核心数多路平台，面向重度渲染与仿真。</div>
         <span class="cgo">查看参数 →</span>
       </a>
@@ -150,9 +294,8 @@
     <h2><span class="bar"></span>横向对比</h2>
     <p class="csub">同价位桌面 i3 与几款至强的实际定位对比，帮你选型不踩坑。</p>
     <div class="grid">
-      <a class="card" href="i3-8100对比Xeon-E2124G与E3-1225v6.html">
-        <div class="ctitle">i3-8100 对比 Xeon E-2124G 与 E3-1225 v6</div>
-        <div class="cmeta">同价位选型 · 实战对比</div>
+      <a class="card c4" href="i3-8100对比Xeon-E2124G与E3-1225v6.html">
+        <div class="top"><span class="block">VS</span><div><div class="ctitle">i3-8100 对比 Xeon E-2124G 与 E3-1225 v6</div><div class="cmeta">同价位选型 · 实战对比</div></div></div>
         <div class="cdesc">桌面四核 vs 至强单路，从价格、功耗到扩展性逐项拆解。</div>
         <span class="cgo">查看对比 →</span>
       </a>
@@ -191,6 +334,5 @@
     q.addEventListener('input',update);
   })();
 </script>
-<script src="assets/js/site-nav.js"></script>
 </body>
 </html>
