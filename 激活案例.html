@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows KMS 激活命令参考（合规整理） · ai-chin-a.space</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#ffffff; --ink:#1f2933; --sub:#52606d;
+    --line:#e4e9f0; --blue:#2f6fed; --blue2:#e8f0fe; --green:#1f9d6b;
+    --green2:#e6f6ef; --amber:#b7791f; --amber2:#fff7e6; --red:#d64545;
+    --red2:#fdeced; --code:#0f1b2d; --codebg:#f0f3f7; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px}
+  header{background:linear-gradient(135deg,#2f6fed,#1b4fc4);color:#fff;padding:40px 22px 32px}
+  header .wrap{max-width:940px;margin:0 auto}
+  header h1{margin:0 0 8px;font-size:28px;letter-spacing:.5px}
+  header p{margin:4px 0;opacity:.92;font-size:14.5px}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:4px 12px;border-radius:999px;font-size:13px;margin-top:10px}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 26px;margin:20px 0;box-shadow:0 1px 3px rgba(16,24,40,.04)}
+  h2{font-size:21px;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .num{background:var(--blue);color:#fff;width:28px;height:28px;border-radius:8px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+  h3{font-size:16px;margin:16px 0 4px;color:var(--ink)}
+  p{margin:8px 0}
+  .sub{color:var(--sub);font-size:14px;margin-top:-2px}
+  code{background:var(--codebg);color:var(--code);padding:2px 7px;border-radius:6px;
+    font-family:"SFMono-Regular",Consolas,monospace;font-size:13.5px}
+  pre{background:var(--code);color:#e6edf3;padding:15px 17px;border-radius:12px;overflow:auto;
+    font-family:"SFMono-Regular",Consolas,monospace;font-size:13px;line-height:1.6;margin:12px 0}
+  pre .c{color:#7f9bb5}
+  pre .g{color:#9be3b8}
+  pre .y{color:#f2d479}
+  .step{display:flex;gap:12px;align-items:flex-start;margin:10px 0}
+  .step .k{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue2);color:var(--blue);
+    font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  .box{border-radius:10px;padding:14px 16px;margin:14px 0;font-size:14.5px}
+  .info{background:var(--blue2);border:1px solid #cfe0fb}
+  .ok{background:var(--green2);border:1px solid #bfe9d2}
+  .warn{background:var(--amber2);border:1px solid #f0dca0}
+  .danger{background:var(--red2);border:1px solid #f3c2c2}
+  .box b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f0f4f9;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .copy{position:relative}
+  .copy button{position:absolute;top:8px;right:8px;background:#22324a;color:#fff;border:0;
+    padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;opacity:.85}
+  .copy button:hover{opacity:1}
+  .mono{font-family:monospace;background:#eef2f7;padding:1px 6px;border-radius:5px}
+  footer{max-width:940px;margin:28px auto;padding:0 22px 46px;color:var(--sub);font-size:13.5px}
+  .ph{color:var(--amber);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Windows KMS 激活命令参考（合规整理）</h1>
+    <p>整理自一份「激活案例」笔记，保留其 slmgr 命令技术骨架，移除第三方公共 KMS 服务器清单。</p>
+    <span class="badge">📡 来自 ai-chin-a.space 收集整理</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="box danger">
+    <b>合规声明：</b>本页仅作为 Windows 批量激活（<code>slmgr</code>）命令行用法的<b>技术参考</b>。
+    原始笔记中罗列的一批<b>第三方公共 KMS 服务器地址</b>已按合规要求移除——
+    连接未经授权的公共 KMS 主机激活 Windows / Office 属于<b>规避软件授权</b>，不在本页提供，也不建议任何人使用。
+    合法的 KMS 激活应<b>通过你方批量许可（VLSC）获取 CSVLK 自建主机</b>，或连接<b>组织授权的内网 KMS</b>。
+  </div>
+
+  <section>
+    <h2><span class="num">一</span>KMS 客户端激活三步</h2>
+    <p class="sub">在「开始菜单」右键 → 选择 <b>Windows PowerShell(管理员)</b>，依次执行。三步顺序不可乱。</p>
+
+    <div class="step"><div class="k">1</div><div>
+      <b>安装产品密钥（GVLK）</b>
+      <div class="copy"><button onclick="copy(this)">复制</button><pre>slmgr /ipk <span class="g">&lt;你的 GVLK&gt;</span></pre></div>
+      <p>不同系统版本的 GVLK（即 KMS 客户端安装密钥）不一样，例如 Windows 10 LTSC、Windows 10 Pro 各有固定值。<br>
+      <span class="sub">⚠️ GVLK 是微软<b>官方公开</b>的客户端密钥，它只告诉系统「该去哪类 KMS 激活」，<b>本身不能独立激活</b>，必须配合合法的 KMS 主机。</span>
+      本站另有《GVLK 密钥大全》可查各版本对应值。</p>
+    </div></div>
+
+    <div class="step"><div class="k">2</div><div>
+      <b>指定 KMS 主机</b>
+      <div class="copy"><button onclick="copy(this)">复制</button><pre>slmgr /skms <span class="ph">&lt;你的授权 KMS 主机&gt;</span></pre></div>
+      <p>此处应填<b>你方自建 / 组织授权的 KMS 主机名</b>（如 <span class="mono">kms.your-domain.local</span>，客户端经内网 DNS <span class="mono">_vlmcs._tcp</span> 自动发现）。<br>
+      <span class="sub">原笔记此处写的是第三方公共地址，本页不提供——请改用你方合法主机。</span></p>
+    </div></div>
+
+    <div class="step"><div class="k">3</div><div>
+      <b>执行激活</b>
+      <div class="copy"><button onclick="copy(this)">复制</button><pre>slmgr /ato</pre></div>
+      <p>需要等一会儿。激活后到「此电脑 → 属性」查看是否激活；若未成功可<b>重启电脑</b>再试，通常即可完成。</p>
+      <div class="box info"><b>激活阈值：</b>Windows 的 KMS 激活要求网络中达到 <b>25 台</b>已连该主机的客户端才会批量激活（Windows Server 为 5 台）。这是微软设计，与主机是否「可用」无关。</div>
+    </div></div>
+  </section>
+
+  <section>
+    <h2><span class="num">二</span>一键 bat 脚本写法</h2>
+    <p class="sub">不想一条条输入，可建一个 <span class="mono">.bat</span> 文件，右键「以管理员身份运行」。</p>
+    <div class="box warn"><b>原笔记的提示（保留）：</b>bat 中命令不要直接逐行复制，有时会出错——因为需要<b>前一条确认完成后</b>才执行下一条。可用 <code>&amp;&amp;</code> 操作符确保顺序执行。</div>
+    <div class="copy"><button onclick="copy(this)">复制</button><pre>@echo off
+slmgr /ipk <span class="g">&lt;GVLK&gt;</span> <span class="y">&amp;&amp;</span> slmgr /skms <span class="ph">&lt;授权 KMS 主机&gt;</span> <span class="y">&amp;&amp;</span> slmgr /ato</pre></div>
+    <p class="sub">把 <code>&lt;GVLK&gt;</code> 与 <code>&lt;授权 KMS 主机&gt;</code> 换成你的合法值即可。注意直接复制网络命令可能因编码 / 换行出错，用 <code>&amp;&amp;</code> 串联可避免顺序问题。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">三</span>其他常用 slmgr 命令</h2>
+    <p class="sub">以下均为微软官方 <code>slmgr</code> 工具的合法参数，用于管理激活状态。</p>
+    <table>
+      <tr><th>命令</th><th>作用</th></tr>
+      <tr><td><code>slmgr /upk</code></td><td>卸载当前产品密钥</td></tr>
+      <tr><td><code>slmgr /xpr</code></td><td>查看激活过期时间（KMS 激活自激活日起约 <b>180 天</b>到期，到期前客户端会自动向主机续期）</td></tr>
+      <tr><td><code>slmgr /dlv</code></td><td>显示详细激活信息（主机地址、剩余宽限期等）</td></tr>
+      <tr><td><code>slmgr /ckms</code></td><td>清除指定的 KMS 主机，恢复为自动发现</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">四</span>关于「KMS 服务器地址」的合规说明</h2>
+    <p>原始笔记罗列了一批第三方公共 KMS 服务器（十余个地址）。本页<b>不提供、不罗列</b>任何第三方 KMS 主机地址，原因：</p>
+    <ul>
+      <li><b>法律：</b>连接未授权 KMS 激活属于规避软件授权，组织 / 企业使用更涉合规风险。</li>
+      <li><b>安全：</b>公共 KMS 历史上曾被用于投递恶意软件，连入即把系统暴露给不可信第三方。</li>
+      <li><b>稳定：</b>这类地址随时失效、随时更换，依赖它们必然频繁激活失败。</li>
+    </ul>
+    <div class="box ok"><b>正确做法：</b>如需使用 KMS 激活，请通过 <b>批量许可（VLSC）</b> 获取 CSVLK 自建 KMS 主机；或向<b>组织 IT 管理员</b>索取授权的内网 KMS 主机地址（客户端经内部 DNS <span class="mono">_vlmcs._tcp</span> 自动发现），<b>勿自行联网寻找来路不明的公共 KMS 服务</b>。</div>
+  </section>
+
+  <section>
+    <h2><span class="num">五</span>合法激活途径对照</h2>
+    <table>
+      <tr><th>途径</th><th>适用场景</th></tr>
+      <tr><td>数字许可证（Digital License）</td><td>零售版 / 升级版，绑定微软账号，重装自动激活</td></tr>
+      <tr><td>MAK（多次激活密钥）</td><td>持有批量许可协议的组织，联网一次性激活</td></tr>
+      <tr><td>KMS（需合法 CSVLK 主机）</td><td>大型企业内网，需 VL 协议 + 自建 / 授权主机，180 天续期</td></tr>
+      <tr><td>订阅激活</td><td>Microsoft 365 / Windows 订阅（教育、企业）</td></tr>
+      <tr><td>教育 / 组织授权</td><td>学校、机构统一采购的授权方案</td></tr>
+    </table>
+  </section>
+
+  <div class="box info" style="margin-top:24px">
+    <b>本页由 <span style="color:var(--blue)">ai-chin-a.space</span> 收集整理。</b>
+    内容整理自工作目录《激活案例.txt》，保留其 <code>slmgr</code> 命令技术骨架（<code>/ipk</code> <code>/skms</code> <code>/ato</code> <code>/upk</code> <code>/xpr</code> 等），
+    移除第三方公共 KMS 服务器清单并改写为合法激活指引。相关概念可参阅本站《GVLK 密钥大全》与《KMS 批量激活技术说明》。
+    官方参考：<a href="https://learn.microsoft.com/windows/deployment/volume-activation/activate-using-key-management-service-vamt" target="_blank" rel="noopener">Microsoft Learn · 批量激活</a>。
+  </div>
+
+</div>
+
+<footer>
+  合规整理版 · 单文件自包含（样式内联，无外部依赖）· 技术参考用途。
+</footer>
+
+<script>
+function copy(btn){
+  var pre = btn.parentElement.querySelector('pre');
+  if(!pre) return;
+  var text = pre.innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var old = btn.textContent; btn.textContent='已复制';
+    setTimeout(function(){btn.textContent=old;},1200);
+  }).catch(function(){
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);
+    ta.select();try{document.execCommand('copy');var o=btn.textContent;btn.textContent='已复制';
+    setTimeout(function(){btn.textContent=o;},1200);}catch(e){}document.body.removeChild(ta);
+  });
+}
+</script>
+<script src="assets/js/site-nav.js"></script>
+</body>
+</html>
