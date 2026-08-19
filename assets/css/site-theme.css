@@ -51,3 +51,11 @@ ul.tips li{margin:6px 0;font-size:13.5px}
 footer{color:var(--sub);font-size:12px;text-align:center;margin-top:10px}
 a{color:var(--brand)}
 @media(max-width:760px){.row .lbl{width:80px}.row .val{width:52px}th,td{padding:6px 5px}}
+
+/* Site action buttons (back / bookmark) */
+.site-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.site-actions .btn{background:transparent;border:1px solid var(--line);padding:6px 10px;border-radius:8px;font-weight:700;color:var(--brand);cursor:pointer;text-decoration:none}
+.site-actions .btn:hover{background:rgba(10,95,207,0.06)}
+.site-actions .btn.bookmark{border-color:transparent;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff}
+.site-actions .btn.bookmark:hover{opacity:.95}
+
