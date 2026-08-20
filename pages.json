@@ -1,0 +1,59 @@
+{
+  "updated": "2026-08-20",
+  "categories": [
+    {
+      "name": "最新更新",
+      "sub": "最近发布的观察文章，置顶展示方便阅读。",
+      "items": [
+        {"file": "打火机中外贸易战.html", "title": "打火机中外贸易战", "meta": "行业观察 · 贸易与产业链", "desc": "一文梳理中国打火机产业如何从作坊走向全球市场与贸易博弈。", "icon": "🔥", "color": "c1", "go": "查看观察 →"},
+        {"file": "美日汽车贸易战.html", "title": "美日汽车贸易战", "meta": "行业观察 · 汽车产业链", "desc": "回顾美日长期汽车博弈及其对全球制造业格局的影响。", "icon": "🚗", "color": "c1", "go": "查看观察 →"},
+        {"file": "美加软木木材争端.html", "title": "美加软木木材争端", "meta": "资源贸易 · 环保政策", "desc": "分析北美软木/木材贸易争端的政策与市场影响。", "icon": "🌲", "color": "c1", "go": "查看观察 →"}
+      ]
+    },
+    {
+      "name": "实用工具 / 授权资料",
+      "sub": "微软官方公开信息的整理页，覆盖系统授权与批量激活相关的常用查询。",
+      "items": [
+        {"file": "GVLK密钥大全.html", "title": "GVLK 密钥大全", "meta": "微软官方 KMS 客户端密钥", "desc": "Windows / Office 全版本 KMS 批量激活客户端密钥，含每版本说明与一键复制，来自 ai-chin-a.space 收集。", "icon": "KEY", "color": "c1", "go": "查看密钥库 →"},
+        {"file": "KMS批量激活技术说明.html", "title": "KMS 批量激活技术说明", "meta": "微软 KMS 激活服务器侧", "desc": "KMS 原理、合法自建步骤、slmgr 命令与公共 KMS 风险科普，来自 ai-chin-a.space 收集。", "icon": "KMS", "color": "c2", "go": "查看说明 →"},
+        {"file": "激活案例.html", "title": "激活案例", "meta": "slmgr 三步激活法 · 合规改写", "desc": "由「激活案例.txt」改写为合规 HTML：保留 /ipk → /skms → /ato 三步法与 slmgr 命令，移除第三方公共 KMS 地址清单，来自 ai-chin-a.space 收集。", "icon": "✓", "color": "c3", "go": "查看案例 →"}
+      ]
+    },
+    {
+      "name": "至强 E-2100 / E-2200 系列",
+      "sub": "面向单路服务器与入门工作站的 Coffee Lake 平台，常被视为经典 E3 的接班人。",
+      "items": [
+        {"file": "至强E-2100系列参数大全.html", "title": "至强 E-2100 系列", "meta": "Coffee Lake · 单路主流", "desc": "入门单路服务器/轻量工作站，接替 E3-1200 的主力型号。", "icon": "E21", "color": "c1", "go": "查看参数 →"},
+        {"file": "至强E-2200系列参数大全.html", "title": "至强 E-2200 系列", "meta": "Coffee Lake Refresh · 单路", "desc": "E-2100 的频率/核心数小幅提升版，性价比之选。", "icon": "E22", "color": "c2", "go": "查看参数 →"}
+      ]
+    },
+    {
+      "name": "至强 E3-1200 系列（v1 – v6）",
+      "sub": "从 v1(Sandy Bridge) 到 v6(Kaby Lake) 的六代演进，小型服务器、NAS、软路由与家用主机的经典之选。",
+      "items": [
+        {"file": "至强E3-1200-v1系列参数大全.html", "title": "至强 E3-1200 v1", "meta": "Sandy Bridge · 2011", "desc": "初代 E3，LGA1155，开启家用服务器的性价比时代。", "icon": "v1", "color": "c1", "go": "查看参数 →"},
+        {"file": "至强E3-1200-v2系列参数大全.html", "title": "至强 E3-1200 v2", "meta": "Ivy Bridge · 2012", "desc": "LGA1155 二代，能效与核显升级，洋垃圾市场常青款。", "icon": "v2", "color": "c2", "go": "查看参数 →"},
+        {"file": "至强E3-1200-v3系列参数大全.html", "title": "至强 E3-1200 v3", "meta": "Haswell · 2013", "desc": "LGA1150，需配合 C2xx 芯片组，家用/NAS 黄金一代。", "icon": "v3", "color": "c3", "go": "查看参数 →"},
+        {"file": "至强E3-1200-v4系列参数大全.html", "title": "至强 E3-1200 v4", "meta": "Broadwell · 2015", "desc": "LGA1150 末代，14nm 初尝试，型号相对精简。", "icon": "v4", "color": "c4", "go": "查看参数 →"},
+        {"file": "至强E3-1200-v5系列参数大全.html", "title": "至强 E3-1200 v5", "meta": "Skylake · 2015", "desc": "转 LGA1151，部分型号改为 BGA 封装，平台门槛变化。", "icon": "v5", "color": "c5", "go": "查看参数 →"},
+        {"file": "至强E3-1200-v6系列参数大全.html", "title": "至强 E3-1200 v6", "meta": "Kaby Lake · 2017", "desc": "E3 末代，LGA1151，之后消费级至强逐步让位 E-2100。", "icon": "v6", "color": "c6", "go": "查看参数 →"}
+      ]
+    },
+    {
+      "name": "至强 W 系列（工作站）",
+      "sub": "单路到多路工作站平台，核心数与 PCIe 扩展性更强，面向创作与计算负载。",
+      "items": [
+        {"file": "至强W-1200系列参数大全.html", "title": "至强 W-1200 系列", "meta": "Comet Lake · 单路工作站", "desc": "桌面级工作站台，高睿频、强单核，适合剪辑/建模。", "icon": "W12", "color": "c1", "go": "查看参数 →"},
+        {"file": "至强W-1300系列参数大全.html", "title": "至强 W-1300 系列", "meta": "Rocket Lake · 单路工作站", "desc": "W-1200 的继任，IPC 提升，单路创作主力。", "icon": "W13", "color": "c2", "go": "查看参数 →"},
+        {"file": "至强W-2100系列参数大全.html", "title": "至强 W-2100 系列", "meta": "Skylake-W · 多路工作站", "desc": "高核心数多路平台，面向重度渲染与仿真。", "icon": "W21", "color": "c3", "go": "查看参数 →"}
+      ]
+    },
+    {
+      "name": "横向对比",
+      "sub": "同价位桌面 i3 与几款至强的实际定位对比，帮你选型不踩坑。",
+      "items": [
+        {"file": "i3-8100对比Xeon-E2124G与E3-1225v6.html", "title": "i3-8100 对比 Xeon E-2124G 与 E3-1225 v6", "meta": "同价位选型 · 实战对比", "desc": "桌面四核 vs 至强单路，从价格、功耗到扩展性逐项拆解。", "icon": "VS", "color": "c4", "go": "查看对比 →"}
+      ]
+    }
+  ]
+}
